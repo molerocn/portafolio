@@ -1,16 +1,9 @@
 import { Button } from "@/components/ui/button";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import GetInTouchForm from "./get-in-touch";
+import Image from "next/image";
 
 export function SendMailDialog() {
   return (
@@ -22,8 +15,8 @@ export function SendMailDialog() {
         <div className="grid lg:grid-cols-2">
           <img
             src="https://cdn.dribbble.com/users/1162077/screenshots/4649464/media/76bd131b4aa3447eb9f9d0887972c066.gif"
-            alt=""
-            className="h-48 w-full lg:h-full object-cover rounded-l"
+            alt="programmer"
+            className="h-48 w-full hidden lg:block lg:h-full object-cover rounded-l"
           />
           <div className="p-4 lg:p-10">
             <h3 className="text-3xl font-bold mb-4">Cont&aacute;ctame</h3>
