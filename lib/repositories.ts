@@ -3,8 +3,12 @@ interface Repository {
   description: string;
   stars: number;
   language: programmingLanguage;
+  deployed?: string;
+  repository: string;
   updatedAt: string;
 }
+
+const GITHUB = "https://github.com/juancamr";
 
 export const repositories: Repository[] = [
   {
@@ -14,12 +18,15 @@ export const repositories: Repository[] = [
     stars: 0,
     language: "Typescript",
     updatedAt: "julio 2023",
+    repository: "aoesntu",
   },
   {
     name: "tiims-website",
     description: "The website for TIIMS",
     stars: 4,
     language: "Javascript",
+    deployed: "https://tiims.com.pe",
+    repository: `${GITHUB}/tiims-website`,
     updatedAt: "agosto 2023",
   },
   {
@@ -27,6 +34,7 @@ export const repositories: Repository[] = [
     description: "sntaoehsutnoa",
     stars: 5,
     language: "Python",
+    repository: `${GITHUB}/pyhasher`,
     updatedAt: "Mayo 2023",
   },
   {
@@ -34,6 +42,7 @@ export const repositories: Repository[] = [
     description: "sntaoehsutnoa",
     stars: 0,
     language: "php",
+    repository: `${GITHUB}/restaurante`,
     updatedAt: "Enero 2023",
   },
   {
@@ -41,6 +50,7 @@ export const repositories: Repository[] = [
     description: "sntaoehsutnoa",
     stars: 0,
     language: "Java",
+    repository: `${GITHUB}/nsaoehusaot`,
     updatedAt: "saeuaot",
   },
 ];

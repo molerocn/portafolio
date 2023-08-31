@@ -39,7 +39,9 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <header className="py-8 px-4 md:px-16 lg:px-20 xl:px-40 fixed w-screen dark:bg-slate-950 z-40 bg-white">
             <nav className="w-full flex">
-              <span className="text-3xl font-bold mr-auto">{"{ JM }"}</span>
+              <span className="text-2xl xl:text-3xl font-bold mr-auto">
+                {"{ JM }"}
+              </span>
               <div className="flex items-center space-x-3">
                 <div className="hidden lg:block">
                   <LanguageButton />
@@ -50,7 +52,7 @@ export default function RootLayout({
             </nav>
           </header>
           {children}
-          <footer>this is the footer</footer>
+          {/* <footer>this is the footer</footer> */}
           <Toaster />
         </ThemeProvider>
       </body>
