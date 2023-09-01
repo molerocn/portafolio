@@ -9,7 +9,7 @@ export function SendMailDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>Contacto</Button>
+        <Button variant={"blue"}>Contacto</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[825px] p-0">
         <div className="grid lg:grid-cols-2">
