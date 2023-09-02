@@ -20,7 +20,7 @@ const Lenguages = () => {
     encryptAnimation();
   });
 
-  return <p className="text-center">{text}</p>;
+  return <p className="text-center">{text.slice(0, 30)}</p>;
 };
 
 export default Lenguages;

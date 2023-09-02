@@ -1,17 +1,12 @@
-import { ModeToggle } from "@/components/theme-button";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-import LanguageButton from "@/components/language-button";
 import { Toaster } from "@/components/ui/toaster";
-import { Button } from "@/components/ui/button";
-import { SendMailDialog } from "@/components/send-mail-dialog";
-import Link from "next/link";
+import Navbar from "@/components/navbar";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
-  // weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
@@ -41,23 +36,7 @@ export default function RootLayout({
       </head>
       <body className={montserrat.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          <header className="py-8 px-4 md:px-16 lg:px-20 xl:px-40 fixed w-screen dark:bg-slate-950 z-40 bg-white">
-            <nav className="w-full flex">
-              <Link
-                href={"/"}
-                className="text-2xl xl:text-3xl font-bold mr-auto"
-              >
-                {"{ JM }"}
-              </Link>
-              <div className="flex items-center space-x-3">
-                {/* <div className="hidden lg:block">
-                  <LanguageButton />
-                </div> */}
-                <ModeToggle />
-                <SendMailDialog />
-              </div>
-            </nav>
-          </header>
+          <Navbar />
           {children}
           {/* <footer>this is the footer</footer> */}
           <Toaster />
