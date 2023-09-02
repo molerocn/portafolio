@@ -139,9 +139,9 @@ const TerminalSimulator = () => {
           isMaximized
             ? "lg:w-[400px] xl:w-[500px] 2xl:w-[600px]"
             : "2xl:w-[100px] xl:w-[100px] lg:w-[100px]"
-        } lg:h-[400px] xl:h-[500px]  shadow-xl transition-all rounded-l-2xl bg-white dark:bg-blue-950 overflow-y-auto relative border border-gray-200 dark:border-gray-800`}
+        } lg:h-[400px] xl:h-[500px]  shadow-2xl transition-all rounded-l-2xl bg-slate-50 dark:bg-gray-800 overflow-y-auto relative border border-gray-200 dark:border-gray-800`}
       >
-        <div className="dark:bg-slate-800 bg-black w-full h-8 rounded-tl-xl absolute top-0">
+        <div className="dark:bg-gray-800 bg-slate-50 w-full h-8 rounded-tl-xl absolute top-0">
           <div className="flex items-center h-full space-x-3 px-4">
             <div className="h-3 w-3 rounded-full bg-red-500"></div>
             <div
@@ -158,7 +158,7 @@ const TerminalSimulator = () => {
         >
           <HoverCard>
             <HoverCardTrigger className="cursor-pointer">
-              <p className="text-base text-gray-400 mb-4 mt-8">
+              <p className="text-base text-blue-400 dark:text-indigo-300 font-medium mb-4 mt-8">
                 Comandos disponibles
               </p>
             </HoverCardTrigger>
