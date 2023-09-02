@@ -10,13 +10,12 @@ const Navbar = () => {
     const navbar = document.getElementById("navbar");
     window.onscroll = function () {
       if (window.scrollY > 100) {
-        navbar?.classList.add("shadow-md");
-        navbar?.classList.remove("py-8");
-        navbar?.classList.add("py-4");
+        navbar?.classList.add("opacity-0");
+        // navbar?.classList.add("shadow-md");
+        // navbar?.classList.remove("py-8");
+        // navbar?.classList.add("py-4");
       } else {
-        navbar?.classList.remove("shadow-md");
-        navbar?.classList.remove("py-4");
-        navbar?.classList.add("py-8");
+        navbar?.classList.remove("opacity-0");
       }
     };
   }, []);

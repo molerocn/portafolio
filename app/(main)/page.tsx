@@ -1,61 +1,14 @@
 import TerminalSimulator from "@/components/terminal";
-import { Button } from "@/components/ui/button";
 import { repositories } from "@/lib/repositories";
-import { Github, Linkedin } from "lucide-react";
-import Link from "next/link";
 import CardRepository from "@/components/card-repository";
 import Lenguages from "@/components/Lenguages";
-import NameAnimation from "@/components/name-animation";
+import TopContainer from "@/components/top-container";
 
 export default function Home() {
   return (
     <main>
       <section className="relative">
-        <div className="grid lg:grid-cols-2 relative min-h-screen px-4 md:px-16 lg:px-20 xl:px-40">
-          <div className="h-screen flex items-center">
-            <div className="space-y-6">
-              <div className="max-w-screen-md space-y-4">
-                <NameAnimation />
-                <p className="text-lg text-gray-600 dark:text-gray-400">
-                  Tempor commodo laboris nisi exercitation eiusmod minim
-                  exercitation proident enim pariatur.
-                </p>
-              </div>
-              <Button className="font-bold" variant={"blue"} size={"lg"}>
-                <Link target="_blank" href="/assets/curriculum.pdf">
-                  Descarga mi CV
-                </Link>
-              </Button>
-              <div className="flex flex-wrap space-x-8">
-                <Link target="_blank" href={"https://github.com/juancamr"}>
-                  @github/juancamr
-                </Link>
-                <Link target="_blank" href={"https://linkedin.com/in/juancamr"}>
-                  @linkedin/juancamr
-                </Link>
-              </div>
-            </div>
-          </div>
-          <div className="hidden lg:block lg:relative">
-            <div
-              className="
-              hidden xl:block
-              absolute top-28
-              h-[10rem] w-[10rem]
-            lg:h-[30rem] lg:w-[30rem]
-            bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-100 via-transparent to-transparent dark:from-blue-950 dark:via-transparent dark:to-transparent -z-10
-            "
-            ></div>
-            <div
-              className="
-              absolute bottom-0
-              right-0
-            h-[40rem] w-[40rem]
-            bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-300 via-transparent to-transparent dark:from-blue-900 dark:via-transparent dark:to-transparent
-            "
-            ></div>
-          </div>
-        </div>
+        <TopContainer />
         <div className="absolute right-0 top-0 h-screen items-center hidden lg:flex">
           <TerminalSimulator />
         </div>

@@ -141,7 +141,7 @@ const TerminalSimulator = () => {
             : "2xl:w-[100px] xl:w-[100px] lg:w-[100px]"
         } lg:h-[400px] xl:h-[500px]  shadow-xl transition-all rounded-l-2xl bg-white dark:bg-blue-950 overflow-y-auto relative border border-gray-200 dark:border-gray-800`}
       >
-        <div className="dark:bg-slate-800 bg-blue-950 w-full h-8 rounded-tl-xl absolute top-0">
+        <div className="dark:bg-slate-800 bg-black w-full h-8 rounded-tl-xl absolute top-0">
           <div className="flex items-center h-full space-x-3 px-4">
             <div className="h-3 w-3 rounded-full bg-red-500"></div>
             <div
