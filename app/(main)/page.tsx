@@ -2,7 +2,7 @@
 import TerminalSimulator from "@/components/terminal";
 import { repositories } from "@/lib/repositories";
 import CardRepository from "@/components/card-repository";
-import Lenguages from "@/components/lenguages";
+import Lenguages from "@/components/languages";
 import TopContainer from "@/components/top-container";
 import "@/components/arrow.css";
 import { useState } from "react";
