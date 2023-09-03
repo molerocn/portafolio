@@ -4,3 +4,8 @@ type programmingLanguage =
   | "php"
   | "Javascript"
   | "Python";
+
+declare module "typed.js" {
+  const Typed: any;
+  export = Typed;
+}
