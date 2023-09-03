@@ -3,6 +3,10 @@
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { Ubuntu_Mono } from "next/font/google";
 import { HoverCardContent, HoverCard, HoverCardTrigger } from "./ui/hover-card";
+import { GITHUB_URL, LENGUAGES, LINKEDIN_URL } from "@/lib/constants";
+import Typed from "typed.js";
+import Link from "next/link";
+import { SendMailDialog } from "./send-mail-dialog";
 
 interface Command {
   type: "command" | "response";
@@ -11,11 +15,23 @@ interface Command {
 
 const ubuntu = Ubuntu_Mono({ subsets: ["latin"], weight: "400" });
 
-const TerminalSimulator = () => {
+const TerminalSimulator = ({
+  isTerminalMaximized,
+  setIsTerminalMaximized,
+}: {
+  isTerminalMaximized: boolean;
+  setIsTerminalMaximized: Function;
+}) => {
   const comandosDisponibles = ["lenguajes", "about_me", "clear", "neofetch"];
   const [comandos, setComandos] = useState<Command[]>([]);
   const [command, setCommand] = useState("");
   const terminalRef = useRef<HTMLDivElement>(null);
+  const typedCommand = useRef<HTMLInputElement>(null);
+
+  let lenguagesResponse = "Estos son los lenguajes que domino:";
+  LENGUAGES.forEach((lenguage) => {
+    lenguagesResponse += `\n${lenguage}`;
+  });
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -41,7 +57,7 @@ const TerminalSimulator = () => {
               ...prev,
               {
                 type: "response",
-                text: "Estos son los lenguajes que domino:\nJavascript\nTypescript\nPython\nJava",
+                text: lenguagesResponse,
               },
             ];
           });
@@ -66,15 +82,15 @@ const TerminalSimulator = () => {
                 text: `
                 888888 888b     d888 
                   "88b 8888b   d8888 
-                  888 88888b.d88888 
-                  888 888Y88888P888 
-                  888 888 Y888P 888 
-                  888 888  Y8P  888 
-                  88P 888   "   888 
-                  888 888       888 
-                .d88P               
-              .d88P"                
-              888P"                  
+                    888 88888b.d88888 
+                    888 888Y88888P888 
+                    888 888 Y888P 888 
+                    888 888  Y8P  888 
+                    88P 888   "   888 
+                    888 888       888 
+                  .d88P               
+                .d88P"                
+                888P"                  
 
                 `,
               },
@@ -119,81 +135,140 @@ const TerminalSimulator = () => {
       event.preventDefault();
     }
   };
-  const [isMaximized, setIsMaximized] = useState(true);
 
   const minimizarTerminal = () => {
-    setIsMaximized(!isMaximized);
+    setIsTerminalMaximized(!isTerminalMaximized);
   };
 
   useEffect(() => {
     document.getElementById("command-input")?.focus();
+    const typed = new Typed(typedCommand.current, {
+      strings: comandosDisponibles,
+      typeSpeed: 50,
+      backSpeed: 50,
+      loop: true,
+      attr: "placeholder",
+      bindInputFocusEvents: true,
+      backDelay: 1000,
+    });
+    return () => {
+      typed.destroy();
+    };
   }, []);
 
   return (
     <section
       className={`${ubuntu.className} fixed top-0 right-0 h-screen flex items-center`}
     >
-      <div
-        ref={terminalRef}
-        className={`${
-          isMaximized
-            ? "lg:w-[400px] xl:w-[500px] 2xl:w-[600px]"
-            : "2xl:w-[100px] xl:w-[100px] lg:w-[100px]"
-        } lg:h-[400px] xl:h-[500px]  shadow-2xl transition-all rounded-l-2xl bg-slate-50 dark:bg-gray-800 overflow-y-auto relative border border-gray-200 dark:border-gray-800`}
-      >
-        <div className="dark:bg-gray-800 bg-slate-50 w-full h-8 rounded-tl-xl absolute top-0">
-          <div className="flex items-center h-full space-x-3 px-4">
-            <div className="h-3 w-3 rounded-full bg-red-500"></div>
-            <div
-              className="h-3 w-3 rounded-full bg-yellow-500 cursor-pointer"
-              onClick={minimizarTerminal}
-            ></div>
-            <div className="h-3 w-3 rounded-full bg-green-500"></div>
-          </div>
-        </div>
+      <div>
+        {/* <p className="text-gray-400">
+          Intenta escribiendo <span ref={typedCommand}></span>
+        </p> */}
         <div
-          className={`h-full rounded-bl-xl p-4 dark:text-white ${
-            !isMaximized && "hidden"
-          }`}
+          ref={terminalRef}
+          onClick={() => document.getElementById("command-input")?.focus()}
+          className={`${
+            isTerminalMaximized
+              ? "lg:w-[400px] xl:w-[500px] 2xl:w-[600px]"
+              : "2xl:w-[95px] xl:w-[95px] lg:w-[95px]"
+          } lg:h-[400px] xl:h-[500px]  shadow-2xl transition-all rounded-l-2xl bg-slate-50 dark:bg-gray-800 overflow-y-auto relative border border-gray-200 dark:border-gray-800`}
         >
-          <HoverCard>
-            <HoverCardTrigger className="cursor-pointer">
-              <p className="text-base text-blue-400 dark:text-indigo-300 font-medium mb-4 mt-8">
-                Comandos disponibles
-              </p>
-            </HoverCardTrigger>
-            <HoverCardContent>
-              Ctrl + L - Ctrl + U
-              <ul className="mt-2">
-                {comandosDisponibles.map((command, index) => (
-                  <li key={index} className="mb-2">
-                    <CommandLine type="command" command={command} />
-                  </li>
-                ))}
-              </ul>
-            </HoverCardContent>
-          </HoverCard>
-          <div className="space-y-1 mb-1">
-            {comandos.map((command, index) => (
-              <CommandLine
-                key={index}
-                type={command.type}
-                command={command.text}
-              />
-            ))}
+          <div className=" w-full h-8 rounded-tl-xl absolute top-0">
+            <div className="flex items-center h-full space-x-3 px-4">
+              <div className="h-3 w-3 rounded-full bg-red-500"></div>
+              <div
+                className="h-3 w-3 rounded-full bg-yellow-500 cursor-pointer"
+                onClick={minimizarTerminal}
+              ></div>
+              <div className="h-3 w-3 rounded-full bg-green-500"></div>
+              {isTerminalMaximized && (
+                <i
+                  className={`fa-solid fa-angles-right text-gray-400 dark:text-gray-500 cursor-pointer`}
+                  onClick={minimizarTerminal}
+                ></i>
+              )}
+            </div>
           </div>
-          <form onSubmit={handleSubmit} className="flex items-center pb-3">
-            <i className="fa-solid fa-chevron-right mr-2 text-[0.7rem] text-green-500"></i>
-            <input
-              onKeyDown={handleKeyDown}
-              onChange={handleChange}
-              value={command}
-              id="command-input"
-              type="text"
-              autoComplete="off"
-              className="bg-transparent dark:text-white border-transparent focus:border-transparent focus:ring-transparent w-full outline-none"
-            />
-          </form>
+          <div
+            className={`h-full rounded-bl-xl p-4 dark:text-white ${
+              !isTerminalMaximized && "hidden"
+            }`}
+          >
+            <HoverCard>
+              <HoverCardTrigger className="cursor-pointer">
+                <p className="text-base text-blue-400 dark:text-indigo-300 font-medium mb-4 mt-8">
+                  Comandos disponibles
+                </p>
+              </HoverCardTrigger>
+              <HoverCardContent>
+                Ctrl + L - Ctrl + U
+                <ul className="mt-2">
+                  {comandosDisponibles.map((command, index) => (
+                    <li key={index} className="mb-2">
+                      <CommandLine type="command" command={command} />
+                    </li>
+                  ))}
+                </ul>
+              </HoverCardContent>
+            </HoverCard>
+            <div className="space-y-1 mb-1">
+              {comandos.map((command, index) => (
+                <CommandLine
+                  key={index}
+                  type={command.type}
+                  command={command.text}
+                />
+              ))}
+            </div>
+            <form onSubmit={handleSubmit} className="flex items-center pb-3">
+              <i className="fa-solid fa-chevron-right mr-2 text-[0.7rem] text-green-500"></i>
+              <input
+                onKeyDown={handleKeyDown}
+                onChange={handleChange}
+                value={command}
+                id="command-input"
+                ref={typedCommand}
+                type="text"
+                autoComplete="off"
+                className="bg-transparent dark:text-white border-transparent focus:border-transparent focus:ring-transparent w-full outline-none"
+              />
+            </form>
+          </div>
+          <div
+            className={`${
+              isTerminalMaximized && "hidden"
+            } flex items-center justify-center h-full`}
+          >
+            <div className="space-y-3">
+              <div>
+                <Link href={LINKEDIN_URL} target="_blank">
+                  <img
+                    src="https://img.freepik.com/premium-vector/linkedin-logo_578229-227.jpg"
+                    alt="linkedin-logo"
+                    className="w-10 rounded"
+                  />
+                </Link>
+              </div>
+              <div>
+                <Link href={GITHUB_URL} target="_blank">
+                  <img
+                    src="https://seeklogo.com/images/G/github-logo-2E3852456C-seeklogo.com.png"
+                    alt="github-logo"
+                    className="w-10 rounded"
+                  />
+                </Link>
+              </div>
+              <div className="cursor-pointer">
+                <SendMailDialog>
+                  <img
+                    src="https://static.vecteezy.com/system/resources/thumbnails/017/396/815/small_2x/google-contacts-icon-free-png.png"
+                    alt=""
+                    className="w-10 rounded"
+                  />
+                </SendMailDialog>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>

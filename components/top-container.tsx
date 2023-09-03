@@ -1,17 +1,21 @@
 "use client";
-import Image from "next/image";
 import NameAnimation from "./name-animation";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import LinkedinLink from "./linkedin-link";
+import SocialLink from "./social-link";
+import { GITHUB_URL, LINKEDIN_PROFILE, LINKEDIN_URL } from "@/lib/constants";
 interface Color {
   first_color: boolean;
   second_color: boolean;
   third_color: boolean;
 }
 
-const TopContainer = () => {
+const TopContainer = ({
+  isTerminalMaximized
+}: {
+  isTerminalMaximized: boolean
+}) => {
   const [activeColors, setActiveColors] = useState<Color>({
     first_color: true,
     second_color: false,
@@ -73,67 +77,36 @@ const TopContainer = () => {
               size={"lg"}
             >
               <Link target="_blank" href="/assets/curriculum.pdf">
-                Descarga mi CV
+                Descargar CV
               </Link>
             </Button>
           </div>
-          <div className="flex flex-wrap mt-12">
-            <LinkedinLink />
-            <div className="space-x-2 flex">
-              <img
-                src={
-                  "https://media.licdn.com/dms/image/D4E03AQEJDWY4QYYN2A/profile-displayphoto-shrink_800_800/0/1679555424374?e=1698883200&v=beta&t=3fIOmXqhOJTJW3lEH8iGY_HqQIeor2LU7OO-g5q-8r0"
-                }
-                alt={"photo_me"}
-                className="h-6 w-6 rounded-full"
-              />
-              <Link target="_blank" href={"https://linkedin.com/in/juancamr"}>
-                @linkedin/juancamr
-              </Link>
-            </div>
+          <div className="flex flex-wrap space-y-3 sm:space-y-0 mt-12">
+            <SocialLink
+              photo={LINKEDIN_PROFILE}
+              link={GITHUB_URL}
+              label={"@github/juancamr"}
+              type="github"
+            />
+            <SocialLink
+              photo={LINKEDIN_PROFILE}
+              link={LINKEDIN_URL}
+              label="@linkedin/juancamr"
+              type="linkedin"
+            />
           </div>
         </div>
       </div>
-      <div className="hidden ">
-        <div
-          className={`
-              hidden xl:block
-              absolute top-28
-              h-[10rem] w-[10rem]
-            lg:h-[30rem] lg:w-[30rem]
-            bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] 
-            ${activeColors.first_color && "from-blue-100 dark:from-blue-950"}
-            ${
-              activeColors.second_color &&
-              "from-indigo-100 dark:from-indigo-950"
-            }
-            ${
-              activeColors.third_color && "from-yellow-100 dark:from-yellow-950"
-            }
-            via-transparent
-            to-transparent
-            dark:via-transparent dark:to-transparent -z-10
-            transition-all duration-1000
-            `}
-        ></div>
-        <div
-          className={`
-              absolute bottom-0
-              right-0
-            h-[40rem] w-[40rem]
-            bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] 
-            ${activeColors.first_color && "from-blue-300 dark:from-blue-900"}
-            ${
-              activeColors.second_color &&
-              "from-indigo-300 dark:from-indigo-900"
-            }
-            ${
-              activeColors.third_color && "from-yellow-300 dark:from-yellow-900"
-            }
-            via-transparent to-transparent dark:via-transparent dark:to-transparent
-
-            `}
-        ></div>
+      <div
+        className={`flex items-center justify-end ${
+          isTerminalMaximized && "hidden"
+        }`}
+      >
+        <img
+          src="https://miro.medium.com/max/320/1*cZm7wURoNLmjpwaxr8Jt5g.png"
+          alt="emoji"
+          className="h-40 w-40"
+        />
       </div>
     </div>
   );

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ModeToggle } from "./theme-button";
 import { SendMailDialog } from "./send-mail-dialog";
 import { useEffect } from "react";
+import { Button } from "./ui/button";
 
 const Navbar = () => {
   useEffect(() => {
@@ -33,7 +34,9 @@ const Navbar = () => {
                 <LanguageButton />
               </div> */}
           <ModeToggle />
-          <SendMailDialog />
+          <SendMailDialog>
+            <Button variant={"default"}>Contacto</Button>
+          </SendMailDialog>
         </div>
       </nav>
     </header>

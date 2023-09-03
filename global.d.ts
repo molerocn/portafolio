@@ -1,1 +1,6 @@
-type programmingLanguage =  "Typescript" | "Java" | "php" | "Javascript" | "Python";
+type programmingLanguage =
+  | "Typescript"
+  | "Java"
+  | "php"
+  | "Javascript"
+  | "Python";

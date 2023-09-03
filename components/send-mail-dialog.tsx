@@ -5,11 +5,11 @@ import { Label } from "@/components/ui/label";
 import GetInTouchForm from "./get-in-touch";
 import Image from "next/image";
 
-export function SendMailDialog() {
+export function SendMailDialog({ children }: { children: React.ReactNode }) {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant={"default"}>Contacto</Button>
+        {children}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[825px] p-0">
         <div className="grid lg:grid-cols-2">
