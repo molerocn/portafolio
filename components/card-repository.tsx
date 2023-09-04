@@ -20,7 +20,6 @@ const CardRepository = (props: {
   name: string;
   description: string;
   language: programmingLanguage;
-  updatedAt: string;
   deployed?: string;
   repository: string;
 }) => {
@@ -28,7 +27,6 @@ const CardRepository = (props: {
     name,
     description,
     language,
-    updatedAt,
     repository,
     deployed,
   } = props;

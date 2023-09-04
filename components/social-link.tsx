@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { HoverCard, HoverCardContent, HoverCardTrigger } from "./ui/hover-card";
 import { LINKEDIN_PROFILE } from "@/lib/constants";
+import Image from "next/image";
 
 interface Props {
   link: string;

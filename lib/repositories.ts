@@ -1,56 +1,55 @@
 interface Repository {
   name: string;
-  description: string;
-  stars: number;
   language: programmingLanguage;
   deployed?: string;
+  description: string;
   repository: string;
-  updatedAt: string;
 }
 
 const GITHUB = "https://github.com/juancamr";
 
 export const repositories: Repository[] = [
   {
-    name: "freelancer-server",
-    description:
-      "The server for the freelancer app includes the API and the database using mongodb",
-    stars: 0,
-    language: "Typescript",
-    updatedAt: "julio 2023",
-    repository: "aoesntu",
+    name: "tiims-website",
+    language: "Javascript",
+    repository: `${GITHUB}/tiims-website`,
+    description: "Web page for TIIMS company",
+    deployed: "https://tiims.com.pe",
   },
   {
-    name: "tiims-website",
-    description: "The website for TIIMS",
-    stars: 4,
-    language: "Javascript",
-    deployed: "https://tiims.com.pe",
-    repository: `${GITHUB}/tiims-website`,
-    updatedAt: "agosto 2023",
+    name: "client-provider",
+    language: "Typescript",
+    description: "Client provider ",
+    repository: `${GITHUB}/client-provider`,
+  },
+  {
+    name: "freelancer-server",
+    language: "Java",
+    description: "Freelancer server",
+    repository: `${GITHUB}/freelancer-server`,
+  },
+  {
+    name: "rabbit-chat",
+    language: "Typescript",
+    description: "Chat with RabbitMQ",
+    repository: `${GITHUB}/rabbit-chat`,
   },
   {
     name: "pyhasher",
-    description: "sntaoehsutnoa",
-    stars: 5,
     language: "Python",
-    repository: `${GITHUB}/pyhasher`,
-    updatedAt: "Mayo 2023",
+    description: "Hasher",
+    repository: `${GITHUB}/rabbit-chat`,
   },
   {
-    name: "restaurante",
-    description: "sntaoehsutnoa",
-    stars: 0,
+    name: "website-restaurante",
     language: "php",
-    repository: `${GITHUB}/restaurante`,
-    updatedAt: "Enero 2023",
+    description: "Chat with RabbitMQ",
+    repository: `${GITHUB}/website-restaurante`,
   },
   {
-    name: "nsaoehusaot",
-    description: "sntaoehsutnoa",
-    stars: 0,
+    name: "registro-ventas",
     language: "Java",
-    repository: `${GITHUB}/nsaoehusaot`,
-    updatedAt: "saeuaot",
+    description: "Sales record",
+    repository: `${GITHUB}/registro-ventas`,
   },
 ];

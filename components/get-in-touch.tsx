@@ -17,9 +17,20 @@ import {
 import { Input } from "@/components/ui/input";
 import { useToast } from "./ui/use-toast";
 
+const numberErrorMessage = "El número debe tener 9 dígitos";
+const phoneRegex = new RegExp(
+  /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
+);
 const formSchema = z.object({
   name: z.string(),
-  email: z.string().email(),
+  phone_number: z
+    .string({
+      required_error: "El número es requerido",
+      invalid_type_error: "Debe ser un número",
+    })
+    .regex(phoneRegex, "Número inválido")
+    .min(9, numberErrorMessage)
+    .max(9, numberErrorMessage),
   note: z.string(),
 });
 
@@ -30,13 +41,13 @@ const GetInTouchForm = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       name: "",
-      email: "",
+      phone_number: "",
       note: "",
     },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const { name, email, note } = values;
+    const { name, phone_number, note } = values;
     console.log(name);
     toast({
       description: "Su mensaje fue enviado. ✅",
@@ -61,12 +72,12 @@ const GetInTouchForm = () => {
           />
           <FormField
             control={form.control}
-            name="email"
+            name="phone_number"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Correo</FormLabel>
+                <FormLabel>Número de contacto</FormLabel>
                 <FormControl>
-                  <Input placeholder="micorreo@example.com" {...field} />
+                  <Input placeholder="999 ..." {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -86,7 +97,7 @@ const GetInTouchForm = () => {
             )}
           />
         </div>
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Enviar</Button>
       </form>
     </Form>
   );

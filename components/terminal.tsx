@@ -7,6 +7,7 @@ import { GITHUB_URL, LENGUAGES, LINKEDIN_URL } from "@/lib/constants";
 import Typed from "typed.js";
 import Link from "next/link";
 import { SendMailDialog } from "./send-mail-dialog";
+import { MoveDown } from "lucide-react";
 
 interface Command {
   type: "command" | "response";
@@ -142,18 +143,18 @@ const TerminalSimulator = ({
 
   useEffect(() => {
     document.getElementById("command-input")?.focus();
-    const typed = new Typed(typedCommand.current, {
-      strings: comandosDisponibles,
-      typeSpeed: 50,
-      backSpeed: 50,
-      loop: true,
-      attr: "placeholder",
-      bindInputFocusEvents: true,
-      backDelay: 1000,
-    });
-    return () => {
-      typed.destroy();
-    };
+    // const typed = new Typed(typedCommand.current, {
+    //   strings: comandosDisponibles,
+    //   typeSpeed: 50,
+    //   backSpeed: 50,
+    //   loop: true,
+    //   attr: "placeholder",
+    //   bindInputFocusEvents: true,
+    //   backDelay: 1000,
+    // });
+    // return () => {
+    //   typed.destroy();
+    // };
   }, []);
 
   return (
@@ -169,106 +170,133 @@ const TerminalSimulator = ({
           onClick={() => document.getElementById("command-input")?.focus()}
           className={`${
             isTerminalMaximized
-              ? "lg:w-[400px] xl:w-[500px] 2xl:w-[600px]"
-              : "2xl:w-[95px] xl:w-[95px] lg:w-[95px]"
+              ? "lg:w-[350px] xl:w-[450px] 3xl:w-[600px]"
+              : "2xl:w-[70px] xl:w-[70px] lg:w-[70px]"
           } lg:h-[400px] xl:h-[500px]  shadow-2xl transition-all rounded-l-2xl bg-slate-50 dark:bg-gray-800 overflow-y-auto relative border border-gray-200 dark:border-gray-800`}
         >
-          <div className=" w-full h-8 rounded-tl-xl absolute top-0">
-            <div className="flex items-center h-full space-x-3 px-4">
-              <div className="h-3 w-3 rounded-full bg-red-500"></div>
-              <div
-                className="h-3 w-3 rounded-full bg-yellow-500 cursor-pointer"
-                onClick={minimizarTerminal}
-              ></div>
-              <div className="h-3 w-3 rounded-full bg-green-500"></div>
-              {isTerminalMaximized && (
-                <i
-                  className={`fa-solid fa-angles-right text-gray-400 dark:text-gray-500 cursor-pointer`}
+          <section className={`${!isTerminalMaximized && "hidden"}`}>
+            <div className={`w-full h-8 rounded-tl-xl absolute top-0`}>
+              <div className="flex items-center h-full space-x-3 px-4">
+                <div className="h-3 w-3 rounded-full bg-red-500"></div>
+                <div
+                  className="h-3 w-3 rounded-full bg-yellow-500 cursor-pointer"
                   onClick={minimizarTerminal}
-                ></i>
-              )}
+                ></div>
+                <div className="h-3 w-3 rounded-full bg-green-500"></div>
+                {isTerminalMaximized && (
+                  <i
+                    className={`fa-solid fa-angles-right text-gray-400 dark:text-gray-500 cursor-pointer`}
+                    onClick={minimizarTerminal}
+                  ></i>
+                )}
+              </div>
             </div>
-          </div>
-          <div
-            className={`h-full rounded-bl-xl p-4 dark:text-white ${
-              !isTerminalMaximized && "hidden"
-            }`}
-          >
-            <HoverCard>
-              <HoverCardTrigger className="cursor-pointer">
-                <p className="text-base text-blue-400 dark:text-indigo-300 font-medium mb-4 mt-8">
-                  Comandos disponibles
-                </p>
-              </HoverCardTrigger>
-              <HoverCardContent>
-                Ctrl + L - Ctrl + U
-                <ul className="mt-2">
-                  {comandosDisponibles.map((command, index) => (
-                    <li key={index} className="mb-2">
-                      <CommandLine type="command" command={command} />
-                    </li>
-                  ))}
-                </ul>
-              </HoverCardContent>
-            </HoverCard>
-            <div className="space-y-1 mb-1">
-              {comandos.map((command, index) => (
-                <CommandLine
-                  key={index}
-                  type={command.type}
-                  command={command.text}
+            <div className={`h-full rounded-bl-xl p-4 dark:text-white `}>
+              <HoverCard>
+                <HoverCardTrigger className="cursor-pointer">
+                  <p className="text-base text-blue-400 dark:text-indigo-300 font-medium mb-4 mt-8">
+                    Comandos disponibles
+                  </p>
+                </HoverCardTrigger>
+                <HoverCardContent>
+                  Ctrl + L - Ctrl + U
+                  <ul className="mt-2">
+                    {comandosDisponibles.map((command, index) => (
+                      <li key={index} className="mb-2">
+                        <CommandLine type="command" command={command} />
+                      </li>
+                    ))}
+                  </ul>
+                </HoverCardContent>
+              </HoverCard>
+              <div className="space-y-1 mb-1">
+                {comandos.map((command, index) => (
+                  <CommandLine
+                    key={index}
+                    type={command.type}
+                    command={command.text}
+                  />
+                ))}
+              </div>
+              <form onSubmit={handleSubmit} className="flex items-center pb-3">
+                <i className="fa-solid fa-chevron-right mr-2 text-[0.7rem] text-green-500"></i>
+                <input
+                  onKeyDown={handleKeyDown}
+                  onChange={handleChange}
+                  value={command}
+                  id="command-input"
+                  type="text"
+                  autoComplete="off"
+                  className="bg-transparent dark:text-white border-transparent focus:border-transparent focus:ring-transparent w-full outline-none"
                 />
-              ))}
+              </form>
             </div>
-            <form onSubmit={handleSubmit} className="flex items-center pb-3">
-              <i className="fa-solid fa-chevron-right mr-2 text-[0.7rem] text-green-500"></i>
-              <input
-                onKeyDown={handleKeyDown}
-                onChange={handleChange}
-                value={command}
-                id="command-input"
-                ref={typedCommand}
-                type="text"
-                autoComplete="off"
-                className="bg-transparent dark:text-white border-transparent focus:border-transparent focus:ring-transparent w-full outline-none"
-              />
-            </form>
-          </div>
-          <div
-            className={`${
-              isTerminalMaximized && "hidden"
-            } flex items-center justify-center h-full`}
+          </section>
+          <section
+            className={`${isTerminalMaximized && "hidden"} h-full relative`}
           >
-            <div className="space-y-3">
-              <div>
-                <Link href={LINKEDIN_URL} target="_blank">
-                  <img
-                    src="https://img.freepik.com/premium-vector/linkedin-logo_578229-227.jpg"
-                    alt="linkedin-logo"
-                    className="w-10 rounded"
-                  />
-                </Link>
-              </div>
-              <div>
-                <Link href={GITHUB_URL} target="_blank">
-                  <img
-                    src="https://seeklogo.com/images/G/github-logo-2E3852456C-seeklogo.com.png"
-                    alt="github-logo"
-                    className="w-10 rounded"
-                  />
-                </Link>
-              </div>
-              <div className="cursor-pointer">
-                <SendMailDialog>
-                  <img
-                    src="https://static.vecteezy.com/system/resources/thumbnails/017/396/815/small_2x/google-contacts-icon-free-png.png"
-                    alt=""
-                    className="w-10 rounded"
-                  />
-                </SendMailDialog>
+            <div
+              className={`w-full py-4 rounded-tl-xl flex justify-center absolute top-0`}
+            >
+              <i
+                onClick={minimizarTerminal}
+                className="fa-solid fa-angles-left cursor-pointer
+              text-gray-400 dark:text-gray-500
+                "
+              ></i>
+            </div>
+            <pre
+              style={{
+                fontFamily: "__Ubuntu_Mono_328342",
+                whiteSpace: "pre-wrap",
+              }}
+              className="absolute top-20 w-full justify-center text-center hidden xl:flex"
+            >
+              {"mis\nlinks\n"}
+              {/* <MoveDown /> */}
+            </pre>
+            <div
+              className={`${
+                isTerminalMaximized && "hidden"
+              } flex items-center justify-center h-full`}
+            >
+              <div className="space-y-3">
+                <div className="text-center">
+                  <Link
+                    style={{ fontFamily: "__Montserrat_cabfd8" }}
+                    href={LINKEDIN_URL}
+                    target="_blank"
+                    className="font-bold text-3xl text-blue-500 dark:text-white text-center"
+                  >
+                    in
+                    {/* <img
+                      src="https://static.vecteezy.com/system/resources/previews/018/930/584/original/linkedin-logo-linkedin-icon-transparent-free-png.png"
+                      alt="linkedin-logo"
+                      className="w-10 rounded bg-slate-50"
+                    /> */}
+                  </Link>
+                </div>
+                <div>
+                  <Link href={GITHUB_URL} target="_blank">
+                    <img
+                      src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
+                      alt="github-logo"
+                      className="w-10 bg-slate-50 rounded-full border border-gray-400"
+                    />
+                  </Link>
+                </div>
+                <div className="cursor-pointer">
+                  <SendMailDialog>
+                    <img
+                      src="https://static.vecteezy.com/system/resources/thumbnails/017/396/815/small_2x/google-contacts-icon-free-png.png"
+                      alt=""
+                      className="w-10 rounded"
+                    />
+                  </SendMailDialog>
+                </div>
               </div>
             </div>
-          </div>
+          </section>
         </div>
       </div>
     </section>

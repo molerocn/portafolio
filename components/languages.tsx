@@ -1,7 +1,7 @@
 "use client";
 import CrytoJs from "crypto-js";
 import { useEffect, useState } from "react";
-import { LENGUAGES } from "@/lib/constants";
+import { GITHUB_URL, LENGUAGES } from "@/lib/constants";
 import { Ubuntu_Mono } from "next/font/google";
 
 const ubuntu = Ubuntu_Mono({ subsets: ["latin"], weight: "400" });
@@ -9,6 +9,7 @@ const ubuntu = Ubuntu_Mono({ subsets: ["latin"], weight: "400" });
 const Lenguages = () => {
   const [text, setText] = useState("");
   const [isLenguageDisplayed, setIsLenguageDisplayed] = useState(false);
+  const [proyects, setProyects] = useState<string[]>([]);
   const words = [
     "a",
     "b",
@@ -41,6 +42,25 @@ const Lenguages = () => {
     }
   };
 
+  const updateProyects = (language: string) => {
+    switch (language.toLowerCase()) {
+      case "javascript":
+        setProyects(["tiims-website"]);
+        break;
+      case "typescript":
+        setProyects(["client-provider", "rabbit-chat"]);
+        break;
+      case "python":
+        setProyects(["pyhasher"]);
+        break;
+      case "java":
+        setProyects(["freelancer-server", "registro-ventas"]);
+        break;
+      case "php":
+        setProyects(["website-restaurante"]);
+    }
+  };
+
   const startAnimation = (index = 0) => {
     if (index < LENGUAGES.length) {
       setIsLenguageDisplayed(false);
@@ -48,6 +68,7 @@ const Lenguages = () => {
       const language = LENGUAGES[index];
       setTimeout(() => {
         setText(language);
+        updateProyects(language);
         setIsLenguageDisplayed(true);
         setTimeout(() => {
           startAnimation(index + 1);
@@ -61,20 +82,45 @@ const Lenguages = () => {
   }, []);
 
   return (
-    <div className={ubuntu.className}>
-      <h2 className="text-3xl font-bold text-center mb-1">
-        Hablando en c&oacute;digo
-      </h2>
-      <p className="text-center text-gray-400 mb-6">
-        Estos son algunos de los lenguajes que domino
-      </p>
-      <p
-        className={`text-center text-4xl sm:text-6xl uppercase  ${
-          isLenguageDisplayed ? "font-bold text-blue-500" : "text-gray-500"
-        }`}
-      >
-        {text.slice(0, 15)}
-      </p>
+    <div className="flex w-full justify-center items-center">
+      <div>
+        <h2 className="text-3xl font-bold text-center mb-1">
+          Hablando en c&oacute;digo
+        </h2>
+        <p className="text-center text-gray-400 mb-6">
+          Estos son algunos de los lenguajes que domino
+        </p>
+        <p
+          className={`text-center text-4xl sm:text-6xl mb-5 ${
+            ubuntu.className
+          } ${isLenguageDisplayed ? "font-bold" : "text-gray-500 uppercase"} ${
+            text.toLowerCase() === "javascript" && "text-yellow-400"
+          }
+          ${text.toLocaleLowerCase() === "php" && "text-purple-400"}
+        ${text.toLowerCase() === "typescript" && "text-blue-400"}
+        ${text.toLowerCase() === "python" && "text-green-400"} ${
+            text.toLowerCase() === "java" && "text-red-400"
+          }`}
+        >
+          {text.slice(0, 15)}
+        </p>
+        {isLenguageDisplayed ? (
+          <div className="flex space-x-3 flex-wrap justify-center">
+            {proyects.map((proyect) => (
+              <a target="_blank" href={`${GITHUB_URL}/${proyect}`} className="rounded-3xl border border-gray-400 px-4 py-2 flex space-x-2 items-center">
+                <img
+                  src="https://www.pngmart.com/files/6/Rocket-PNG-Image.png"
+                  className="h-5 w-5 mb-2"
+                  alt=""
+                />
+                <p className="text-center">{proyect}</p>
+              </a>
+            ))}
+          </div>
+        ) : (
+          <div className="h-12"></div>
+        )}
+      </div>
     </div>
   );
 };

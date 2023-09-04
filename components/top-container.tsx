@@ -5,16 +5,18 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import SocialLink from "./social-link";
 import { GITHUB_URL, LINKEDIN_PROFILE, LINKEDIN_URL } from "@/lib/constants";
+import { Ubuntu_Mono } from "next/font/google";
 interface Color {
   first_color: boolean;
   second_color: boolean;
   third_color: boolean;
 }
+const ubuntu = Ubuntu_Mono({ subsets: ["latin"], weight: "400" });
 
 const TopContainer = ({
-  isTerminalMaximized
+  isTerminalMaximized,
 }: {
-  isTerminalMaximized: boolean
+  isTerminalMaximized: boolean;
 }) => {
   const [activeColors, setActiveColors] = useState<Color>({
     first_color: true,
@@ -98,15 +100,14 @@ const TopContainer = ({
         </div>
       </div>
       <div
-        className={`flex items-center justify-end ${
-          isTerminalMaximized && "hidden"
+        className={`hidden lg:flex items-center justify-end ${
+          isTerminalMaximized && "!hidden"
         }`}
       >
-        <img
-          src="https://miro.medium.com/max/320/1*cZm7wURoNLmjpwaxr8Jt5g.png"
-          alt="emoji"
-          className="h-40 w-40"
-        />
+        <p className={`${ubuntu.className} font-bold lg:text-2xl xl:text-3xl`}>
+          "Ctrl + S <i className="fa-solid fa-arrow-right text-xl"></i> Ctrl +
+          Success."
+        </p>
       </div>
     </div>
   );
