@@ -3,6 +3,7 @@ import CrytoJs from "crypto-js";
 import { useEffect, useState } from "react";
 import { GITHUB_URL, LENGUAGES } from "@/lib/constants";
 import { Ubuntu_Mono } from "next/font/google";
+import Image from "next/image";
 
 const ubuntu = Ubuntu_Mono({ subsets: ["latin"], weight: "400" });
 
@@ -82,7 +83,7 @@ const Lenguages = () => {
   }, []);
 
   return (
-    <div className="flex w-full justify-center items-center">
+    <div className="flex w-full justify-center items-center z-40">
       <div>
         <h2 className="text-3xl font-bold text-center mb-1">
           Hablando en c&oacute;digo
@@ -105,11 +106,19 @@ const Lenguages = () => {
           {text.slice(0, 15)}
         </p>
         {isLenguageDisplayed ? (
-          <div className="flex space-x-3 flex-wrap justify-center">
-            {proyects.map((proyect) => (
-              <a target="_blank" href={`${GITHUB_URL}/${proyect}`} className="rounded-3xl border border-gray-400 px-4 py-2 flex space-x-2 items-center">
-                <img
-                  src="https://www.pngmart.com/files/6/Rocket-PNG-Image.png"
+          <div className="flex gap-3 flex-wrap justify-center">
+            {proyects.map((proyect, index) => (
+              <a
+                key={index}
+                target="_blank"
+                href={`${GITHUB_URL}/${proyect}`}
+                className="rounded-3xl border border-gray-200 dark:border-gray-700 px-4 py-2 flex space-x-2 items-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
+              >
+                <Image
+                  width={0}
+                  height={0}
+                  sizes="100vw"
+                  src="/assets/images/rocket.png"
                   className="h-5 w-5 mb-2"
                   alt=""
                 />

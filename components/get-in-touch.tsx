@@ -22,7 +22,7 @@ const phoneRegex = new RegExp(
   /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/
 );
 const formSchema = z.object({
-  name: z.string(),
+  name: z.string().nonempty("El nombre es requerido"),
   phone_number: z
     .string({
       required_error: "El número es requerido",
@@ -31,7 +31,7 @@ const formSchema = z.object({
     .regex(phoneRegex, "Número inválido")
     .min(9, numberErrorMessage)
     .max(9, numberErrorMessage),
-  note: z.string(),
+  note: z.string().nonempty("Dejame un mensaje!"),
 });
 
 const GetInTouchForm = () => {
@@ -56,7 +56,7 @@ const GetInTouchForm = () => {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="space-y-4 mb-8">
+        <div className="space-y-4 mb-6">
           <FormField
             control={form.control}
             name="name"

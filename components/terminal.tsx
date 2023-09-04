@@ -8,6 +8,7 @@ import Typed from "typed.js";
 import Link from "next/link";
 import { SendMailDialog } from "./send-mail-dialog";
 import { MoveDown } from "lucide-react";
+import { ModeToggle } from "./theme-button";
 
 interface Command {
   type: "command" | "response";
@@ -159,7 +160,7 @@ const TerminalSimulator = ({
 
   return (
     <section
-      className={`${ubuntu.className} fixed top-0 right-0 h-screen flex items-center`}
+      className={`${ubuntu.className} fixed top-0 right-0 h-screen flex items-center z-40`}
     >
       <div>
         {/* <p className="text-gray-400">
@@ -171,7 +172,7 @@ const TerminalSimulator = ({
           className={`${
             isTerminalMaximized
               ? "lg:w-[350px] xl:w-[450px] 3xl:w-[600px]"
-              : "2xl:w-[70px] xl:w-[70px] lg:w-[70px]"
+              : "2xl:w-[70px] xl:w-[70px] lg:w-[55px]"
           } lg:h-[400px] xl:h-[500px]  shadow-2xl transition-all rounded-l-2xl bg-slate-50 dark:bg-gray-800 overflow-y-auto relative border border-gray-200 dark:border-gray-800`}
         >
           <section className={`${!isTerminalMaximized && "hidden"}`}>
@@ -241,7 +242,7 @@ const TerminalSimulator = ({
               <i
                 onClick={minimizarTerminal}
                 className="fa-solid fa-angles-left cursor-pointer
-              text-gray-400 dark:text-gray-500
+              text-gray-800 dark:text-slate-50
                 "
               ></i>
             </div>
@@ -252,7 +253,7 @@ const TerminalSimulator = ({
               }}
               className="absolute top-20 w-full justify-center text-center hidden xl:flex"
             >
-              {"mis\nlinks\n"}
+              {"my\nlinks\n"}
               {/* <MoveDown /> */}
             </pre>
             <div
@@ -260,20 +261,15 @@ const TerminalSimulator = ({
                 isTerminalMaximized && "hidden"
               } flex items-center justify-center h-full`}
             >
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <div className="text-center">
                   <Link
                     style={{ fontFamily: "__Montserrat_cabfd8" }}
                     href={LINKEDIN_URL}
                     target="_blank"
-                    className="font-bold text-3xl text-blue-500 dark:text-white text-center"
+                    className="font-bold text-3xl text-blue-500 dark:text-blue-400 text-center"
                   >
                     in
-                    {/* <img
-                      src="https://static.vecteezy.com/system/resources/previews/018/930/584/original/linkedin-logo-linkedin-icon-transparent-free-png.png"
-                      alt="linkedin-logo"
-                      className="w-10 rounded bg-slate-50"
-                    /> */}
                   </Link>
                 </div>
                 <div>
@@ -281,18 +277,24 @@ const TerminalSimulator = ({
                     <img
                       src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
                       alt="github-logo"
-                      className="w-10 bg-slate-50 rounded-full border border-gray-400"
+                      className="w-10 bg-slate-50
+                      dark:bg-gradient-to-tr dark:from-indigo-500  dark:to-rose-200
+                      rounded-full border border-white dark:border-indigo-400"
                     />
                   </Link>
                 </div>
-                <div className="cursor-pointer">
+                <div className="cursor-pointer text-center">
                   <SendMailDialog>
-                    <img
+                    <i className="fa-solid fa-user text-2xl font-bold text-green-600 dark:text-green-400"></i>
+                    {/* <img
                       src="https://static.vecteezy.com/system/resources/thumbnails/017/396/815/small_2x/google-contacts-icon-free-png.png"
                       alt=""
                       className="w-10 rounded"
-                    />
+                    /> */}
                   </SendMailDialog>
+                </div>
+                <div className="flex justify-center">
+                  <ModeToggle />
                 </div>
               </div>
             </div>

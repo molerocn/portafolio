@@ -8,7 +8,7 @@ import "@/components/arrow.css";
 import { useState } from "react";
 
 export default function Home() {
-  const [isTerminalMaximized, setIsTerminalMaximized] = useState(true);
+  const [isTerminalMaximized, setIsTerminalMaximized] = useState(false);
   return (
     <main className="space-y-10">
       <section className="relative min-h-screen">
@@ -60,14 +60,14 @@ export default function Home() {
       <section
         className={`grid ${
           isTerminalMaximized && "lg:grid-cols-3"
-        } px-4 md:px- lg:px-20 xl:px-40 relative`}
+        } px-4 md:px- lg:px-20 xl:px-40 relative h-[350px]`}
       >
         <section
           className={` ${
             isTerminalMaximized && "!hidden"
-          } hidden lg:block h-full w-full top-0 absolute text-2xl`}
+          } hidden lg:block h-full w-full top-0 absolute text-2xl -z-10`}
         >
-          <div className="absolute left-0 flex h-full items-start 3xl:ml-80 2xl:ml-60 xl:ml-40 lg:ml-14">
+          <div className="absolute left-0 flex h-full items-start 3xl:ml-80 2xl:ml-60 xl:ml-28 lg:ml-14">
             <pre
               style={{
                 fontFamily: "__Ubuntu_Mono_328342",
@@ -85,7 +85,7 @@ export default function Home() {
               {";\n}"}
             </pre>
           </div>
-          <div className="absolute right-0 flex h-full items-start 2xl:mr-60 3xl:mr-80 xl:mr-40 lg:mr-14">
+          <div className="absolute right-0 flex h-full items-start 2xl:mr-60 3xl:mr-80 xl:mr-28 lg:mr-14">
             <pre
               style={{
                 fontFamily: "__Ubuntu_Mono_328342",
@@ -108,8 +108,13 @@ export default function Home() {
           <Lenguages />
         </div>
       </section>
-      <section id="footer" className="py-20">
-        holamundo
+      <section
+        id="footer"
+        className={`py-10 px-4 md:px-16 lg:px-20 xl:px-40 grid ${
+          isTerminalMaximized && "lg:grid-cols-3"
+        }`}
+      >
+        <p className="text-center">{"<get-in-touch>"}</p>
       </section>
     </main>
   );

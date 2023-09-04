@@ -85,16 +85,22 @@ const TopContainer = ({
           </div>
           <div className="flex flex-wrap space-y-3 sm:space-y-0 mt-12">
             <SocialLink
-              photo={LINKEDIN_PROFILE}
-              link={GITHUB_URL}
-              label={"@github/juancamr"}
-              type="github"
-            />
-            <SocialLink
-              photo={LINKEDIN_PROFILE}
+              photo={"/assets/images/profile_photo.webp"}
               link={LINKEDIN_URL}
               label="@linkedin/juancamr"
+              description={
+                "Apasionado por la tecnología y la innovación, comprometido con el crecimiento profesional."
+              }
               type="linkedin"
+            />
+            <SocialLink
+              photo={"/assets/images/github_profile.jfif"}
+              link={GITHUB_URL}
+              label={"@github/juancamr"}
+              description={
+                "Bienvenido a mi rincón digital: mi colección de proyectos."
+              }
+              type="github"
             />
           </div>
         </div>
@@ -105,8 +111,9 @@ const TopContainer = ({
         }`}
       >
         <p className={`${ubuntu.className} font-bold lg:text-2xl xl:text-3xl`}>
-          "Ctrl + S <i className="fa-solid fa-arrow-right text-xl"></i> Ctrl +
-          Success."
+          {`"Ctrl + S`} <i className="fa-solid fa-arrow-right text-xl"></i>{" "}
+          {`Ctrl +
+          Success."`}
         </p>
       </div>
     </div>

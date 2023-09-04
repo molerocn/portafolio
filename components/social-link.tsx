@@ -7,14 +7,22 @@ interface Props {
   link: string;
   photo: string;
   label: string;
+  description: string;
   type: "linkedin" | "github";
 }
 
 const SocialLink = (props: Props) => {
-  const { link, photo, label, type } = props;
+  const { link, photo, label, type, description } = props;
   return (
     <div className="space-x-2 flex mr-8">
-      <img src={photo} alt={"photo_me"} className="h-6 w-6 rounded-full" />
+      <Image
+        width={0}
+        height={0}
+        sizes="100vw"
+        src={photo}
+        alt={"photo_me"}
+        className="h-6 w-6 rounded-full"
+      />
       <HoverCard>
         <HoverCardTrigger asChild>
           <Link target="_blank" href={link}>
@@ -23,13 +31,19 @@ const SocialLink = (props: Props) => {
         </HoverCardTrigger>
         <HoverCardContent className="w-80 p-0">
           <div className="relative">
-            <img
-              src={`assets/images/portada_${type}.jpg`}
+            <Image
+              src={`/assets/images/portada_${type}.webp`}
               alt={`portada_${type}`}
+              width={0}
+              sizes="100vw"
+              height={0}
               className="w-full h-32 object-cover rounded-t-md"
             />
-            <img
-              src={LINKEDIN_PROFILE}
+            <Image
+              width={0}
+              height={0}
+              sizes="100vw"
+              src={photo}
               alt="profile_photo"
               className="h-12 w-12 rounded-full absolute bottom-0 left-4 -mb-5 border-2 border-white"
             />
@@ -38,8 +52,7 @@ const SocialLink = (props: Props) => {
             <div>
               <p className="font-bold mb-1">@juancamr</p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                .
+                {description}
               </p>
             </div>
           </div>

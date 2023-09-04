@@ -23,13 +23,13 @@ const Navbar = () => {
   return (
     <header
       id="navbar"
-      className="py-8 px-4 md:px-16 lg:px-20 xl:px-40 fixed w-screen dark:bg-slate-950 z-40 bg-white transition-all"
+      className="py-8 px-4 md:px-16 lg:px-20 xl:px-40 fixed w-screen  transition-all z-50"
     >
       <nav className="w-full flex">
         <Link href={"/"} className="text-2xl xl:text-3xl font-bold mr-auto">
           {"{ JM }"}
         </Link>
-        <div className="flex items-center space-x-4">
+        <div className="flex items-center space-x-6">
           {/* <div className="hidden lg:block">
                 <LanguageButton />
               </div> */}
