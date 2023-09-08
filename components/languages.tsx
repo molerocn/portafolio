@@ -9,6 +9,7 @@ const ubuntu = Ubuntu_Mono({ subsets: ["latin"], weight: "400" });
 
 const Lenguages = () => {
   const [text, setText] = useState("");
+  const [icon, setIcon] = useState("");
   const [isLenguageDisplayed, setIsLenguageDisplayed] = useState(false);
   const [proyects, setProyects] = useState<string[]>([]);
   const words = [
@@ -68,8 +69,9 @@ const Lenguages = () => {
       encryptAnimation();
       const language = LENGUAGES[index];
       setTimeout(() => {
-        setText(language);
-        updateProyects(language);
+        setText(language.name);
+        setIcon(language.icon);
+        updateProyects(language.name);
         setIsLenguageDisplayed(true);
         setTimeout(() => {
           startAnimation(index + 1);
@@ -77,6 +79,25 @@ const Lenguages = () => {
       }, 1000);
     } else startAnimation(0);
   };
+
+  let color = "";
+  switch (text.toLowerCase()) {
+    case "javascript":
+      color = "text-yellow-500 dark:text-yellow-400";
+      break;
+    case "typescript":
+      color = "text-blue-500 dark:text-blue-400";
+      break;
+    case "python":
+      color = "text-green-500 dark:text-green-400";
+      break;
+    case "java":
+      color = "text-red-500 dark:text-red-400";
+      break;
+    case "php":
+      color = "text-purple-500 dark:text-purple-400";
+      break;
+  }
 
   useEffect(() => {
     startAnimation();
@@ -94,14 +115,11 @@ const Lenguages = () => {
         <p
           className={`text-center text-4xl sm:text-6xl mb-5 ${
             ubuntu.className
-          } ${isLenguageDisplayed ? "font-bold" : "text-gray-500 uppercase"} ${
-            text.toLowerCase() === "javascript" && "text-yellow-400"
-          }
-          ${text.toLocaleLowerCase() === "php" && "text-purple-400"}
-        ${text.toLowerCase() === "typescript" && "text-blue-400"}
-        ${text.toLowerCase() === "python" && "text-green-400"} ${
-            text.toLowerCase() === "java" && "text-red-400"
-          }`}
+          } ${
+            isLenguageDisplayed
+              ? "font-bold"
+              : "text-gray-300 dark:text-slate-600 uppercase opacity-50"
+          } ${color}`}
         >
           {text.slice(0, 15)}
         </p>
@@ -114,14 +132,7 @@ const Lenguages = () => {
                 href={`${GITHUB_URL}/${proyect}`}
                 className="rounded-3xl border border-gray-200 dark:border-gray-700 px-4 py-2 flex space-x-2 items-center hover:bg-slate-100 dark:hover:bg-slate-800 transition-all"
               >
-                <Image
-                  width={0}
-                  height={0}
-                  sizes="100vw"
-                  src="/assets/images/rocket.png"
-                  className="h-5 w-5 mb-2"
-                  alt=""
-                />
+                <i className={`fa-solid fa-rocket ${color}`}></i>
                 <p className="text-center">{proyect}</p>
               </a>
             ))}
@@ -130,6 +141,11 @@ const Lenguages = () => {
           <div className="h-12"></div>
         )}
       </div>
+      {isLenguageDisplayed && (
+        <div className="absolute top-0 left-0 w-full h-full flex items-start justify-center -z-10">
+          <img src={icon} className="h-[250px] opacity-5" alt="" />
+        </div>
+      )}
     </div>
   );
 };

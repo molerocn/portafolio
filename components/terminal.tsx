@@ -3,11 +3,11 @@
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { Ubuntu_Mono } from "next/font/google";
 import { HoverCardContent, HoverCard, HoverCardTrigger } from "./ui/hover-card";
-import { GITHUB_URL, LENGUAGES, LINKEDIN_URL } from "@/lib/constants";
+import { ABOUT_ME, GITHUB_URL, LENGUAGES, LINKEDIN_URL } from "@/lib/constants";
 import Typed from "typed.js";
 import Link from "next/link";
 import { SendMailDialog } from "./send-mail-dialog";
-import { MoveDown } from "lucide-react";
+import { Mail, MoveDown } from "lucide-react";
 import { ModeToggle } from "./theme-button";
 
 interface Command {
@@ -70,7 +70,7 @@ const TerminalSimulator = ({
               ...prev,
               {
                 type: "response",
-                text: "Soy un desarrollador de software con 6 meses de experiencia, me gusta aprender cosas nuevas y me considero una persona autodidacta, me gusta trabajar en equipo y soy muy responsable con mis tareas.",
+                text: ABOUT_ME,
               },
             ];
           });
@@ -267,7 +267,7 @@ const TerminalSimulator = ({
                     style={{ fontFamily: "__Montserrat_cabfd8" }}
                     href={LINKEDIN_URL}
                     target="_blank"
-                    className="font-bold text-3xl text-blue-500 dark:text-blue-400 text-center"
+                    className="font-bold text-3xl  text-center"
                   >
                     in
                   </Link>
@@ -278,14 +278,15 @@ const TerminalSimulator = ({
                       src="https://cdn-icons-png.flaticon.com/512/25/25231.png"
                       alt="github-logo"
                       className="w-10 bg-slate-50
-                      dark:bg-gradient-to-tr dark:from-indigo-500  dark:to-rose-200
-                      rounded-full border border-white dark:border-indigo-400"
+                      
+                      rounded-full border border-white dark:border-slate-50"
                     />
                   </Link>
                 </div>
-                <div className="cursor-pointer text-center">
+                <div className="cursor-pointer text-center flex justify-center">
                   <SendMailDialog>
-                    <i className="fa-solid fa-user text-2xl font-bold text-green-600 dark:text-green-400"></i>
+                    <Mail className="h-8 w-8" />
+                    {/* <i className="fa-solid fa-user text-2xl font-bold text-green-600 dark:text-green-400"></i> */}
                     {/* <img
                       src="https://static.vecteezy.com/system/resources/thumbnails/017/396/815/small_2x/google-contacts-icon-free-png.png"
                       alt=""

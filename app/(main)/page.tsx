@@ -6,6 +6,8 @@ import Lenguages from "@/components/languages";
 import TopContainer from "@/components/top-container";
 import "@/components/arrow.css";
 import { useState } from "react";
+import Image from "next/image";
+import { ABOUT_ME, BASES_DE_DATOS, TECNOLOGIAS } from "@/lib/constants";
 
 export default function Home() {
   const [isTerminalMaximized, setIsTerminalMaximized] = useState(false);
@@ -60,7 +62,7 @@ export default function Home() {
       <section
         className={`grid ${
           isTerminalMaximized && "lg:grid-cols-3"
-        } px-4 md:px- lg:px-20 xl:px-40 relative h-[350px]`}
+        } px-4 md:px- lg:px-20 xl:px-40 relative h-[250px]`}
       >
         <section
           className={` ${
@@ -109,12 +111,55 @@ export default function Home() {
         </div>
       </section>
       <section
-        id="footer"
         className={`py-10 px-4 md:px-16 lg:px-20 xl:px-40 grid ${
           isTerminalMaximized && "lg:grid-cols-3"
         }`}
       >
-        <p className="text-center">{"<get-in-touch>"}</p>
+        <div
+          className={`grid ${isTerminalMaximized && "col-span-2"} ${
+            !isTerminalMaximized && "lg:grid-cols-2"
+          }`}
+        >
+          <div className={`py-20 2xl:w-3/4 mx-auto flex items-center`}>
+            <div>
+              <h3 className="font-bold text-3xl mb-4">Sobre m&iacute;</h3>
+              <p className="text-lg text-gray-300 xl:text-xl mb-8">
+                {ABOUT_ME} Estas son algunas con las que eh trabajado:
+              </p>
+              <div className="flex flex-wrap gap-6">
+                {TECNOLOGIAS.map((tecnologia, index) => (
+                  <img
+                    key={index}
+                    className="h-12"
+                    src={tecnologia}
+                    alt={tecnologia}
+                  />
+                ))}
+                <span className="flex items-center">
+                  <p className="font-extralight text-3xl mr-2">express </p>
+                  <img
+                    className="h-10"
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/640px-JavaScript-logo.png"
+                    alt=""
+                  />
+                </span>
+                {/* <span className="text-3xl font-bold">.</span>
+              {BASES_DE_DATOS.map((db, index) => (
+                <img key={index} src={db} alt="db" className="h-12" />
+              ))} */}
+              </div>
+            </div>
+          </div>
+          {!isTerminalMaximized && (
+            <div className="hidden lg:flex items-center justify-center">
+              <img
+                src="https://static.vecteezy.com/system/resources/previews/019/153/003/original/3d-minimal-programming-icon-coding-screen-web-development-concept-laptop-with-a-coding-screen-and-a-coding-icon-3d-illustration-png.png"
+                className="w-full h-auto max-w-[700px] dark:brightness-90"
+                alt="backend"
+              />
+            </div>
+          )}
+        </div>
       </section>
     </main>
   );
