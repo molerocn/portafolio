@@ -64,18 +64,20 @@ export default function RootLayout({
               <div className="text-2xl xl:text-3xl font-bold lg:text-center">
                 {"{ JM }"}
               </div>
-              {footerContent.map((section) => (
-                <div className="flex lg:justify-center">
+              {footerContent.map((section, index) => (
+                <div key={index} className="flex lg:justify-center">
                   <div>
                     <h3 className="font-bold text-lg mb-3">{section.title}</h3>
                     <ul className="space-y-1 text-gray-600 dark:text-gray-400">
                       {section.links
-                        ? section.links.map((link) => (
-                            <li>
+                        ? section.links.map((link, index) => (
+                            <li key={index}>
                               <a href={link.href}>{link.name}</a>
                             </li>
                           ))
-                        : section.content?.map((content) => <li>{content}</li>)}
+                        : section.content?.map((content, index) => (
+                            <li key={index}>{content}</li>
+                          ))}
                     </ul>
                   </div>
                 </div>
