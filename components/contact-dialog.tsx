@@ -33,19 +33,21 @@ export default function ContactDialog({
                 width={0}
                 src="/assets/images/contact.webp"
                 alt="programmer"
-                className="h-48 w-full lg:h-[560px] object-cover rounded-l"
+                className="w-full h-full object-cover rounded-l"
               />
             </div>
-            <div className="p-6 lg:p-10">
-              <h3 className="text-3xl font-bold mb-4">Contacto</h3>
-              <GetInTouchForm closeModal={closeModal} />
-              <p className="mt-4 text-gray-500">
-                Recuerda que tambien puedes llamar a mi n&uacute;mero personal{" "}
-                <span className="text-blue-500">
-                  <a href="tel:+51986327221">986327221</a>
-                </span>
-                .
-              </p>
+            <div className="p-6 lg:p-10 h-full flex items-center">
+              <div>
+                <h3 className="text-3xl font-bold mb-4">Contacto</h3>
+                <GetInTouchForm closeModal={closeModal} />
+                <p className="mt-4 text-gray-500">
+                  Recuerda que tambien puedes llamar a mi n&uacute;mero personal{" "}
+                  <span className="text-blue-500">
+                    <a href="tel:+51986327221">986327221</a>
+                  </span>
+                  .
+                </p>
+              </div>
             </div>
           </div>
         </ModalContent>
