@@ -71,7 +71,6 @@ const GetInTouchForm = ({ closeModal }: { closeModal?: () => void }) => {
         note,
       }),
     });
-    console.log(process.env.MAIL_ACCESS_KEY);
     const data = await response.json();
     return data;
   };
@@ -122,7 +121,8 @@ const GetInTouchForm = ({ closeModal }: { closeModal?: () => void }) => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-blue-600 dark:text-blue-400">
-                  Número de contacto</FormLabel>
+                  Número de contacto
+                </FormLabel>
                 <FormControl>
                   <Input
                     className="dark:bg-slate-900"
@@ -140,7 +140,8 @@ const GetInTouchForm = ({ closeModal }: { closeModal?: () => void }) => {
             render={({ field }) => (
               <FormItem>
                 <FormLabel className="text-blue-600 dark:text-blue-400">
-                  Nota</FormLabel>
+                  Nota
+                </FormLabel>
                 <FormControl>
                   <Textarea
                     className="dark:bg-slate-900 resize-none"

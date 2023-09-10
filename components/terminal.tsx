@@ -3,7 +3,7 @@
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
 import { Ubuntu_Mono } from "next/font/google";
 import { HoverCardContent, HoverCard, HoverCardTrigger } from "./ui/hover-card";
-import { ABOUT_ME, GITHUB_URL, LENGUAGES, LINKEDIN_URL } from "@/lib/constants";
+import { ABOUT_ME, GITHUB_URL, LANGUAGES, LINKEDIN_URL } from "@/lib/constants";
 import Typed from "typed.js";
 import Link from "next/link";
 import { SendMailDialog } from "./send-mail-dialog";
@@ -33,7 +33,7 @@ const TerminalSimulator = ({
   const typedCommand = useRef<HTMLInputElement>(null);
 
   let lenguagesResponse = "Estos son los lenguajes que domino:";
-  LENGUAGES.forEach((lenguage) => {
+  LANGUAGES.forEach((lenguage) => {
     lenguagesResponse += `\n${lenguage}`;
   });
 

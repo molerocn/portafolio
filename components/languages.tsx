@@ -1,7 +1,7 @@
 "use client";
 import CrytoJs from "crypto-js";
 import { useEffect, useState } from "react";
-import { GITHUB_URL, LENGUAGES } from "@/lib/constants";
+import { GITHUB_URL, LANGUAGES } from "@/lib/constants";
 import { Ubuntu_Mono } from "next/font/google";
 import Image from "next/image";
 
@@ -64,10 +64,10 @@ const Lenguages = () => {
   };
 
   const startAnimation = (index = 0) => {
-    if (index < LENGUAGES.length) {
+    if (index < LANGUAGES.length) {
       setIsLenguageDisplayed(false);
       encryptAnimation();
-      const language = LENGUAGES[index];
+      const language = LANGUAGES[index];
       setTimeout(() => {
         setText(language.name);
         setIcon(language.icon);
@@ -143,7 +143,14 @@ const Lenguages = () => {
       </div>
       {isLenguageDisplayed && (
         <div className="absolute top-0 left-0 w-full h-full flex items-start justify-center -z-10">
-          <img src={icon} className="h-[250px] opacity-5" alt="" />
+          <Image
+            sizes="100vw"
+            height={0}
+            width={0}
+            src={icon}
+            className="h-[250px] w-auto opacity-5"
+            alt=""
+          />
         </div>
       )}
     </div>

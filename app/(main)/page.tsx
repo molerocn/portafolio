@@ -6,8 +6,8 @@ import Lenguages from "@/components/languages";
 import TopContainer from "@/components/top-container";
 import "@/components/arrow.css";
 import { useState } from "react";
-import { ABOUT_ME, BASES_DE_DATOS, TECNOLOGIAS } from "@/lib/constants";
-import { Tooltip, divider } from "@nextui-org/react";
+import { ABOUT_ME, TECNOLOGIAS } from "@/lib/constants";
+import { Image, Tooltip } from "@nextui-org/react";
 import GetInTouchForm from "@/components/get-in-touch";
 
 export default function Home() {
@@ -150,7 +150,7 @@ export default function Home() {
           </div>
           {!isTerminalMaximized && (
             <div className="hidden lg:flex items-center justify-center">
-              <img
+              <Image
                 src="https://camo.githubusercontent.com/40165a147c3dcea0fa1db780bb533fc5f98546ccfb9d5d05ddb2f429277f5348/68747470733a2f2f616e616c7974696373696e6469616d61672e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031382f31322f646576656c6f7065722d6472696262626c652e676966"
                 className="w-full h-auto max-w-[500px] dark:brightness-90 rounded-xl"
                 alt="backend"
@@ -160,13 +160,13 @@ export default function Home() {
         </div>
       </section>
       <section
-        className={` px-4 md:px-16 lg:px-28 2xl:px-[300px] 3xl:px-[500px] grid ${
+        className={` px-4 md:px-16 lg:px-32 xl:px-[220px] 2xl:px-[350px] 3xl:px-[500px] grid ${
           isTerminalMaximized && "lg:grid-cols-3"
         }`}
       >
         <div
           className={`grid ${isTerminalMaximized && "col-span-2"} ${
-            !isTerminalMaximized && "lg:grid-cols-2 gap-20 h-[600px]"
+            !isTerminalMaximized && "lg:grid-cols-2 gap-10 2xl:gap-20 h-[600px]"
           }`}
         >
           <div className="inline-flex justify-center lg:pt-20">

@@ -5,26 +5,26 @@ export const responses: any = {
   },
 };
 
-export const LENGUAGES: { name: string; icon: string }[] = [
+export const LANGUAGES: { name: string; icon: string }[] = [
   {
     name: "Javascript",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/JavaScript-logo.png/800px-JavaScript-logo.png",
+    icon: "/assets/images/languages/javascript.webp",
   },
   {
     name: "Typescript",
-    icon: "https://w7.pngwing.com/pngs/915/519/png-transparent-typescript-hd-logo-thumbnail.png",
+    icon: "/assets/images/languages/typescript.webp",
   },
   {
     name: "Python",
-    icon: "https://assets.stickpng.com/images/5848152fcef1014c0b5e4967.png",
+    icon: "/assets/images/languages/python.webp",
   },
   {
     name: "php",
-    icon: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/27/PHP-logo.svg/2560px-PHP-logo.svg.png",
+    icon: "/assets/images/languages/php.webp",
   },
   {
     name: "Java",
-    icon: "https://uploads-ssl.webflow.com/5ffe5bee629c3505f14fb1fd/604aa487faeeda20e43980d2_java_logo.png",
+    icon: "/assets/images/languages/java.webp",
   },
 ];
 
