@@ -16,6 +16,9 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { useToast } from "./ui/use-toast";
+import { Textarea } from "./ui/textarea";
+import { useState } from "react";
+import { Spinner } from "./spinner";
 
 const numberErrorMessage = "El número debe tener 9 dígitos";
 const phoneRegex = new RegExp(
@@ -31,11 +34,17 @@ const formSchema = z.object({
     .regex(phoneRegex, "Número inválido")
     .min(9, numberErrorMessage)
     .max(9, numberErrorMessage),
-  note: z.string().nonempty("Dejame un mensaje!"),
+  note: z
+    .string()
+    .max(160, {
+      message: "El mensaje no puede tener más de 160 caracteres",
+    })
+    .nonempty("Dejame un mensaje!"),
 });
 
-const GetInTouchForm = () => {
+const GetInTouchForm = ({ closeModal }: { closeModal?: () => void }) => {
   const { toast } = useToast();
+  const [isLoading, setIsLoading] = useState(false);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -46,25 +55,62 @@ const GetInTouchForm = () => {
     },
   });
 
+  const sendMail = async (): Promise<any> => {
+    const { name, phone_number, note } = form.getValues();
+    setIsLoading(true);
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+      body: JSON.stringify({
+        access_key: "f0e850cb-9bdb-41bf-b35d-766651887559",
+        name,
+        phone_number,
+        note,
+      }),
+    });
+    console.log(process.env.MAIL_ACCESS_KEY);
+    const data = await response.json();
+    return data;
+  };
+
   function onSubmit(values: z.infer<typeof formSchema>) {
-    const { name, phone_number, note } = values;
-    console.log(name);
-    toast({
-      description: "Su mensaje fue enviado. ✅",
+    sendMail().then((response) => {
+      setIsLoading(false);
+      if (response.success) {
+        //empty all values of the form
+        form.reset();
+        if (closeModal) closeModal();
+        toast({
+          description: "Su mensaje fue enviado. ✅",
+        });
+      } else {
+        toast({
+          description: "Su mensaje no pudo ser enviado. ❌",
+        });
+      }
     });
   }
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)}>
-        <div className="space-y-4 mb-6">
+        <div className="space-y-4 mb-8">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Nombre</FormLabel>
+                <FormLabel className="text-blue-600 dark:text-blue-400">
+                  Nombre
+                </FormLabel>
                 <FormControl>
-                  <Input placeholder="My Name" {...field} />
+                  <Input
+                    className="dark:bg-slate-900"
+                    placeholder="My Name"
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -75,9 +121,14 @@ const GetInTouchForm = () => {
             name="phone_number"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Número de contacto</FormLabel>
+                <FormLabel className="text-blue-600 dark:text-blue-400">
+                  Número de contacto</FormLabel>
                 <FormControl>
-                  <Input placeholder="999 ..." {...field} />
+                  <Input
+                    className="dark:bg-slate-900"
+                    placeholder="999 ..."
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -88,16 +139,32 @@ const GetInTouchForm = () => {
             name="note"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Nota</FormLabel>
+                <FormLabel className="text-blue-600 dark:text-blue-400">
+                  Nota</FormLabel>
                 <FormControl>
-                  <Input placeholder="..." {...field} />
+                  <Textarea
+                    className="dark:bg-slate-900 resize-none"
+                    placeholder="..."
+                    {...field}
+                  />
                 </FormControl>
                 <FormMessage />
               </FormItem>
             )}
           />
         </div>
-        <Button type="submit">Enviar</Button>
+        <Button
+          disabled={isLoading}
+          className="inline-flex bg-blue-600 hover:bg-blue-700 transition-colors rounded-2xl text-white shadow-[0px_0px_30px_0px_#2563EB]"
+          type="submit"
+        >
+          <span className="mr-2">Enviar</span>
+          {isLoading ? (
+            <Spinner />
+          ) : (
+            <i className="fa-solid fa-paper-plane"></i>
+          )}
+        </Button>
       </form>
     </Form>
   );

@@ -9,6 +9,8 @@ import Link from "next/link";
 import { SendMailDialog } from "./send-mail-dialog";
 import { Mail, MoveDown } from "lucide-react";
 import { ModeToggle } from "./theme-button";
+import ContactDialog from "./contact-dialog";
+import { Popover, PopoverContent, PopoverTrigger } from "@nextui-org/react";
 
 interface Command {
   type: "command" | "response";
@@ -193,23 +195,27 @@ const TerminalSimulator = ({
               </div>
             </div>
             <div className={`h-full rounded-bl-xl p-4 dark:text-white `}>
-              <HoverCard>
-                <HoverCardTrigger className="cursor-pointer">
-                  <p className="text-base text-blue-400 dark:text-indigo-300 font-medium mb-4 mt-8">
+              <Popover placement="bottom" showArrow={true}>
+                <PopoverTrigger>
+                  <p className="text-base text-blue-400 dark:text-indigo-300 font-medium mb-4 mt-8 cursor-pointer">
                     Comandos disponibles
                   </p>
-                </HoverCardTrigger>
-                <HoverCardContent>
-                  Ctrl + L - Ctrl + U
-                  <ul className="mt-2">
-                    {comandosDisponibles.map((command, index) => (
-                      <li key={index} className="mb-2">
-                        <CommandLine type="command" command={command} />
-                      </li>
-                    ))}
-                  </ul>
-                </HoverCardContent>
-              </HoverCard>
+                </PopoverTrigger>
+                <PopoverContent>
+                  <div
+                    className={`${ubuntu.className} p-4 rounded-lg border border-gray-200 shadow-lg bg-white dark:bg-gray-700 dark:border-gray-700`}
+                  >
+                    Ctrl + L - Ctrl + U
+                    <ul className="mt-2">
+                      {comandosDisponibles.map((command, index) => (
+                        <li key={index} className="mb-2">
+                          <CommandLine type="command" command={command} />
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </PopoverContent>
+              </Popover>
               <div className="space-y-1 mb-1">
                 {comandos.map((command, index) => (
                   <CommandLine
@@ -282,17 +288,6 @@ const TerminalSimulator = ({
                       rounded-full border border-white dark:border-slate-50"
                     />
                   </Link>
-                </div>
-                <div className="cursor-pointer text-center flex justify-center">
-                  <SendMailDialog>
-                    <Mail className="h-8 w-8" />
-                    {/* <i className="fa-solid fa-user text-2xl font-bold text-green-600 dark:text-green-400"></i> */}
-                    {/* <img
-                      src="https://static.vecteezy.com/system/resources/thumbnails/017/396/815/small_2x/google-contacts-icon-free-png.png"
-                      alt=""
-                      className="w-10 rounded"
-                    /> */}
-                  </SendMailDialog>
                 </div>
                 <div className="flex justify-center">
                   <ModeToggle />

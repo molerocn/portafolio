@@ -29,11 +29,28 @@ export const LENGUAGES: { name: string; icon: string }[] = [
 ];
 
 export const TECNOLOGIAS = [
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png",
-  "https://seeklogo.com/images/N/next-js-icon-logo-EE302D5DBD-seeklogo.com.png",
-  "https://web-strapi.mrmilu.com/uploads/flutter_logo_470e9f7491.png",
-  "/assets/images/angular.png",
-  "https://logodix.com/logo/1614306.png",
+  {
+    name: "React",
+    image:
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png",
+  },
+  {
+    name: "NextJS",
+    image:
+      "https://seeklogo.com/images/N/next-js-icon-logo-EE302D5DBD-seeklogo.com.png",
+  },
+  {
+    name: "Flutter",
+    image: "https://web-strapi.mrmilu.com/uploads/flutter_logo_470e9f7491.png",
+  },
+  {
+    name: "Angular",
+    image: "/assets/images/angular.png",
+  },
+  {
+    name: "Spring Boot",
+    image: "https://logodix.com/logo/1614306.png",
+  },
 ];
 
 export const BASES_DE_DATOS = [

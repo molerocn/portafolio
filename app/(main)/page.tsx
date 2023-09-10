@@ -6,13 +6,14 @@ import Lenguages from "@/components/languages";
 import TopContainer from "@/components/top-container";
 import "@/components/arrow.css";
 import { useState } from "react";
-import Image from "next/image";
 import { ABOUT_ME, BASES_DE_DATOS, TECNOLOGIAS } from "@/lib/constants";
+import { Tooltip, divider } from "@nextui-org/react";
+import GetInTouchForm from "@/components/get-in-touch";
 
 export default function Home() {
   const [isTerminalMaximized, setIsTerminalMaximized] = useState(false);
   return (
-    <main className="space-y-10">
+    <main className="space-y-10 lg:space-y-20">
       <section className="relative min-h-screen">
         <TopContainer isTerminalMaximized={isTerminalMaximized} />
         <div className="absolute right-0 top-0 h-screen items-center hidden lg:flex">
@@ -62,14 +63,14 @@ export default function Home() {
       <section
         className={`grid ${
           isTerminalMaximized && "lg:grid-cols-3"
-        } px-4 md:px- lg:px-20 xl:px-40 relative h-[250px]`}
+        } px-4 md:px- lg:px-20 xl:px-40 relative h-[250px] py-10`}
       >
         <section
           className={` ${
             isTerminalMaximized && "!hidden"
           } hidden lg:block h-full w-full top-0 absolute text-2xl -z-10`}
         >
-          <div className="absolute left-0 flex h-full items-start 3xl:ml-80 2xl:ml-60 xl:ml-28 lg:ml-14">
+          <div className="absolute left-0 flex h-full items-start 3xl:ml-80 2xl:ml-60 xl:ml-28 lg:ml-14 mt-10">
             <pre
               style={{
                 fontFamily: "__Ubuntu_Mono_328342",
@@ -87,7 +88,7 @@ export default function Home() {
               {";\n}"}
             </pre>
           </div>
-          <div className="absolute right-0 flex h-full items-start 2xl:mr-60 3xl:mr-80 xl:mr-28 lg:mr-14">
+          <div className="absolute right-0 flex h-full items-start 2xl:mr-60 3xl:mr-80 xl:mr-28 lg:mr-14 mt-10">
             <pre
               style={{
                 fontFamily: "__Ubuntu_Mono_328342",
@@ -111,29 +112,26 @@ export default function Home() {
         </div>
       </section>
       <section
-        className={`py-10 px-4 md:px-16 lg:px-20 xl:px-40 grid ${
+        className={` px-4 md:px-16 lg:px-20 xl:px-40 grid ${
           isTerminalMaximized && "lg:grid-cols-3"
         }`}
       >
         <div
           className={`grid ${isTerminalMaximized && "col-span-2"} ${
-            !isTerminalMaximized && "lg:grid-cols-2"
+            !isTerminalMaximized && "lg:grid-cols-2 gap-10"
           }`}
         >
           <div className={`py-20 2xl:w-3/4 mx-auto flex items-center`}>
             <div>
               <h3 className="font-bold text-3xl mb-4">Sobre m&iacute;</h3>
-              <p className="text-lg text-gray-300 xl:text-xl mb-8">
+              <p className="text-lg text-gray-500 dark:text-slate-400 xl:text-xl mb-8">
                 {ABOUT_ME} Estas son algunas con las que eh trabajado:
               </p>
               <div className="flex flex-wrap gap-6">
-                {TECNOLOGIAS.map((tecnologia, index) => (
-                  <img
-                    key={index}
-                    className="h-12"
-                    src={tecnologia}
-                    alt={tecnologia}
-                  />
+                {TECNOLOGIAS.map(({ name, image }, index) => (
+                  <Tooltip color={"default"} key={index} content={name}>
+                    <img className="h-12" src={image} alt={name} />
+                  </Tooltip>
                 ))}
                 <span className="flex items-center">
                   <p className="font-extralight text-3xl mr-2">express </p>
@@ -153,10 +151,58 @@ export default function Home() {
           {!isTerminalMaximized && (
             <div className="hidden lg:flex items-center justify-center">
               <img
-                src="https://static.vecteezy.com/system/resources/previews/019/153/003/original/3d-minimal-programming-icon-coding-screen-web-development-concept-laptop-with-a-coding-screen-and-a-coding-icon-3d-illustration-png.png"
-                className="w-full h-auto max-w-[700px] dark:brightness-90"
+                src="https://camo.githubusercontent.com/40165a147c3dcea0fa1db780bb533fc5f98546ccfb9d5d05ddb2f429277f5348/68747470733a2f2f616e616c7974696373696e6469616d61672e636f6d2f77702d636f6e74656e742f75706c6f6164732f323031382f31322f646576656c6f7065722d6472696262626c652e676966"
+                className="w-full h-auto max-w-[500px] dark:brightness-90 rounded-xl"
                 alt="backend"
               />
+            </div>
+          )}
+        </div>
+      </section>
+      <section
+        className={` px-4 md:px-16 lg:px-28 2xl:px-[300px] 3xl:px-[500px] grid ${
+          isTerminalMaximized && "lg:grid-cols-3"
+        }`}
+      >
+        <div
+          className={`grid ${isTerminalMaximized && "col-span-2"} ${
+            !isTerminalMaximized && "lg:grid-cols-2 gap-20 h-[600px]"
+          }`}
+        >
+          <div className="inline-flex justify-center lg:pt-20">
+            <div className="bg-white dark:bg-slate-900 rounded-3xl border border-gray-100 dark:border-gray-800 shadow-2xl p-6 lg:p-10 w-full h-auto">
+              <h1 className="text-3xl mb-6 font-bold">Contacto</h1>
+              <GetInTouchForm />
+              <p className="mt-4 text-gray-500">
+                Recuerda que tambien puedes llamar a mi n&uacute;mero personal{" "}
+                <span className="text-blue-500">
+                  <a href="tel:+51986327221">986327221</a>
+                </span>
+                .
+              </p>
+            </div>
+          </div>
+          {!isTerminalMaximized && (
+            <div className="justify-center pb-20 hidden lg:flex relative">
+              <div
+                className="
+              absolute bottom-0
+              right-0
+            h-[40rem] w-[40rem]
+            bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-200 via-transparent to-transparent dark:from-blue-900 dark:via-transparent dark:to-transparent
+            "
+              ></div>
+              <div className="bg-blue-600 dark:border dark:border-gray-900 text-white p-10 rounded-3xl shadow-2xl flex items-center w-full h-full z-20">
+                <div>
+                  <h1 className="font-extralight text-6xl uppercase mb-4">
+                    Muchas <span className="font-bold">Gracias.</span>
+                  </h1>
+                  <p className="text-white opacity-30 font-bold text-2xl mb-10">
+                    Por visitar mi portafolio.
+                  </p>
+                  <p className="text-xl">Estaremos en contacto pronto!</p>
+                </div>
+              </div>
             </div>
           )}
         </div>

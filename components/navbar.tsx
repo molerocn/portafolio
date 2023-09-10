@@ -4,7 +4,8 @@ import Link from "next/link";
 import { ModeToggle } from "./theme-button";
 import { SendMailDialog } from "./send-mail-dialog";
 import { useEffect } from "react";
-import { Button } from "./ui/button";
+import ContactDialog from "./contact-dialog";
+import { Button } from "@nextui-org/button";
 
 const Navbar = () => {
   useEffect(() => {
@@ -34,9 +35,11 @@ const Navbar = () => {
                 <LanguageButton />
               </div> */}
           <ModeToggle />
-          <SendMailDialog>
-            <Button variant={"default"}>Contacto</Button>
-          </SendMailDialog>
+          <ContactDialog>
+            <button className="rounded-lg shadow border border-gray-200 px-4 py-2 bg-black text-white dark:bg-white dark:text-black font-medium">
+              Contacto
+            </button>
+          </ContactDialog>
         </div>
       </nav>
     </header>

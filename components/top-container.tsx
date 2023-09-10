@@ -87,7 +87,7 @@ const TopContainer = ({
             <SocialLink
               photo={"/assets/images/profile_photo.webp"}
               link={LINKEDIN_URL}
-              label="@linkedin/juancamr"
+              label="linkedin/@juancamr"
               description={
                 "Apasionado por la tecnología y la innovación, comprometido con el crecimiento profesional."
               }
@@ -96,7 +96,7 @@ const TopContainer = ({
             <SocialLink
               photo={"/assets/images/github_profile.jfif"}
               link={GITHUB_URL}
-              label={"@github/juancamr"}
+              label={"github/@juancamr"}
               description={
                 "Bienvenido a mi rincón digital: mi colección de proyectos."
               }
@@ -106,10 +106,26 @@ const TopContainer = ({
         </div>
       </div>
       <div
-        className={`hidden lg:flex items-center justify-end ${
+        className={`hidden lg:flex items-center justify-end relative ${
           isTerminalMaximized && "!hidden"
         }`}
       >
+        <div
+          className="
+              absolute top-1/2 -translate-y-1/2
+              h-[10rem] w-[10rem]
+            lg:h-[30rem] lg:w-[30rem]
+            bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-100 via-transparent to-transparent dark:from-blue-950 dark:via-transparent dark:to-transparent -z-10
+            "
+        ></div>
+        {/* <div
+          className="
+              absolute bottom-0
+              right-0
+            h-[40rem] w-[40rem]
+            bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-blue-200 via-transparent to-transparent dark:from-blue-900 dark:via-transparent dark:to-transparent
+            "
+        ></div> */}
         <p className={`${ubuntu.className} font-bold lg:text-2xl xl:text-3xl`}>
           {`"Ctrl + S`} <i className="fa-solid fa-arrow-right text-xl"></i>{" "}
           {`Ctrl +

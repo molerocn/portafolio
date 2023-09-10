@@ -13,7 +13,7 @@ export function SendMailDialog({ children }: { children: React.ReactNode }) {
         <div className="grid lg:grid-cols-2">
           <div className="relative hidden lg:block">
             <img
-              src="https://media1.giphy.com/media/qgQUggAC3Pfv687qPC/giphy.gif"
+              src="https://img.freepik.com/free-photo/view-3d-businessman_23-2150709872.jpg?t=st=1694311452~exp=1694315052~hmac=94056bcb7c7338e4ac6e235cdab62c8993ee0d69d269e929c0bbcf9ac05dd2f7&w=826"
               alt="programmer"
               className="h-48 w-full lg:h-full object-cover rounded-l"
             />
