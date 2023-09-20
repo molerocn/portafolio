@@ -61,8 +61,8 @@ const TopContainer = ({
             <div className="max-w-screen-md space-y-4">
               <NameAnimation activeColors={activeColors} />
               <p className="text-lg text-gray-600 dark:text-gray-400">
-                Tempor commodo laboris nisi exercitation eiusmod minim
-                exercitation proident enim pariatur.
+                Apasionado por el código limpio y el aprendizaje continuo en la
+                búsqueda de la excelencia.
               </p>
             </div>
             <Button
@@ -78,14 +78,18 @@ const TopContainer = ({
               variant={"default"}
               size={"lg"}
             >
-              <Link target="_blank" href="/assets/curriculum.pdf">
+              <Link
+                target="_blank"
+                download={true}
+                href="/assets/juan_carlos_molero.pdf"
+              >
                 Descargar CV
               </Link>
             </Button>
           </div>
           <div className="flex flex-wrap space-y-3 sm:space-y-0 mt-12">
             <SocialLink
-              photo={"/assets/images/profile_photo.webp"}
+              photo={"/assets/images/foto_linkedin.jfif"}
               link={LINKEDIN_URL}
               label="linkedin/@juancamr"
               description={

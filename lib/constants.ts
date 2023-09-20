@@ -67,4 +67,4 @@ export const LINKEDIN_PROFILE =
 export const GITHUB_URL = "https://github.com/juancamr";
 
 export const ABOUT_ME =
-  "Soy un desarrollador de software con experiencia en el desarrollo full stack (backend, aplicaciones web y movil). Esto debido a que me gusta aprender nuevas tecnologias y estar en constante aprendizaje.";
+  "Estudiante de Ingeniería de Software con seis meses de experiencia como desarrollador full stack. Apasionado por el aprendizaje autodidacta. Me considero una persona disciplinada y curiosa, lo que me lleva a estar en constante aprendizaje e investigación sobre las últimas tecnologías en el desarrollo de software y estoy comprometido a contribuir con mis conocimientos en proyectos relevantes.";

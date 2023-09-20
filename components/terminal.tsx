@@ -34,7 +34,7 @@ const TerminalSimulator = ({
 
   let lenguagesResponse = "Estos son los lenguajes que domino:";
   LANGUAGES.forEach((lenguage) => {
-    lenguagesResponse += `\n${lenguage}`;
+    lenguagesResponse += `\n${lenguage.name}`;
   });
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -252,16 +252,6 @@ const TerminalSimulator = ({
                 "
               ></i>
             </div>
-            <pre
-              style={{
-                fontFamily: "__Ubuntu_Mono_328342",
-                whiteSpace: "pre-wrap",
-              }}
-              className="absolute top-20 w-full justify-center text-center hidden xl:flex"
-            >
-              {"my\nlinks\n"}
-              {/* <MoveDown /> */}
-            </pre>
             <div
               className={`${
                 isTerminalMaximized && "hidden"

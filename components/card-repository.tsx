@@ -23,18 +23,12 @@ const CardRepository = (props: {
   deployed?: string;
   repository: string;
 }) => {
-  const {
-    name,
-    description,
-    language,
-    repository,
-    deployed,
-  } = props;
+  const { name, description, language, repository, deployed } = props;
   return (
     <div className="rounded-xl border border-gray-200 dark:border-gray-700 p-4 h-full">
       <div className="flex space-x-4 mb-4">
         <div className="mr-auto">
-          <p className="text-xl font-bold">{name}</p>
+          <p className="text-xl font-bold mb-1">{name}</p>
           <p className="text-gray-500 leading-5 dark:text-slate-400">
             {description}
           </p>

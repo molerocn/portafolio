@@ -13,43 +13,49 @@ export const repositories: Repository[] = [
     name: "tiims-website",
     language: "Javascript",
     repository: `${GITHUB}/tiims-website`,
-    description: "Web page for TIIMS company",
+    description:
+      "Landing page de Tiims, empresa dedicada a la industria B2B y B2C",
     deployed: "https://tiims.com.pe",
   },
   {
     name: "client-provider",
     language: "Typescript",
-    description: "Client provider ",
+    description:
+      "Backend para una aplicación de freelancers usando express y MongoDB",
     repository: `${GITHUB}/client-provider`,
   },
   {
     name: "freelancer-server",
     language: "Java",
-    description: "Freelancer server",
+    description:
+      "Backend para una aplicación de freelancers usando Spring y MySQL",
     repository: `${GITHUB}/freelancer-server`,
   },
   {
     name: "rabbit-chat",
     language: "Typescript",
-    description: "Chat with RabbitMQ",
+    description: "Chat clone usando RabbitMQ, WebSockets y NodeJS",
     repository: `${GITHUB}/rabbit-chat`,
   },
   {
     name: "pyhasher",
     language: "Python",
-    description: "Hasher",
+    description:
+      "Programa de encriptación en tiempo real diseñado para contraseñas seguras",
     repository: `${GITHUB}/rabbit-chat`,
   },
   {
     name: "website-restaurante",
     language: "php",
-    description: "Chat with RabbitMQ",
+    description:
+      "Landing page de un restaurante, sistema de reservas online y panel de administración",
     repository: `${GITHUB}/website-restaurante`,
   },
   {
     name: "registro-ventas",
     language: "Java",
-    description: "Sales record",
+    description:
+      "Programa para administrar inventario y ventas de una tienda usando Swing y MySQL",
     repository: `${GITHUB}/registro-ventas`,
   },
 ];

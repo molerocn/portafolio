@@ -125,7 +125,11 @@ export default function Home() {
             <div>
               <h3 className="font-bold text-3xl mb-4">Sobre m&iacute;</h3>
               <p className="text-lg text-gray-500 dark:text-slate-400 xl:text-xl mb-8">
-                {ABOUT_ME} Estas son algunas con las que eh trabajado:
+                {ABOUT_ME} Estas son algunas{" "}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-blue-500 to-green-600 font-bold">
+                  tecnolog&iacute;as
+                </span>{" "}
+                con las que eh trabajado:
               </p>
               <div className="flex flex-wrap gap-6">
                 {TECNOLOGIAS.map(({ name, image }, index) => (
@@ -200,7 +204,7 @@ export default function Home() {
                   <p className="text-white opacity-30 font-bold text-2xl mb-10">
                     Por visitar mi portafolio.
                   </p>
-                  <p className="text-xl">Estaremos en contacto pronto!</p>
+                  <p className="text-xl">&#161;Espero tu contacto pronto!</p>
                 </div>
               </div>
             </div>
