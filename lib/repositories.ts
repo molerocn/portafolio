@@ -42,7 +42,7 @@ export const repositories: Repository[] = [
     language: "Python",
     description:
       "Programa de encriptación en tiempo real diseñado para contraseñas seguras",
-    repository: `${GITHUB}/rabbit-chat`,
+    repository: `${GITHUB}/pyhasher`,
   },
   {
     name: "website-restaurante",

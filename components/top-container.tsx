@@ -98,7 +98,7 @@ const TopContainer = ({
               type="linkedin"
             />
             <SocialLink
-              photo={"/assets/images/github_profile.jfif"}
+              photo={"/assets/images/foto_linkedin.jfif"}
               link={GITHUB_URL}
               label={"github/@juancamr"}
               description={

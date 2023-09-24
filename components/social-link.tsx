@@ -21,7 +21,7 @@ const SocialLink = (props: Props) => {
         sizes="100vw"
         src={photo}
         alt={"photo_me"}
-        className="h-6 w-6 rounded-full"
+        className="h-6 w-6 rounded-full object-cover"
       />
       <HoverCard>
         <HoverCardTrigger asChild>
@@ -45,7 +45,7 @@ const SocialLink = (props: Props) => {
               sizes="100vw"
               src={photo}
               alt="profile_photo"
-              className="h-12 w-12 rounded-full absolute bottom-0 left-4 -mb-5 border-2 border-white"
+              className="h-12 w-12 rounded-full absolute bottom-0 left-4 -mb-5 border-2 border-white object-cover"
             />
           </div>
           <div className="flex space-x-4 p-4 pt-8">
