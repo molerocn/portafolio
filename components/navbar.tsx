@@ -2,10 +2,8 @@
 
 import Link from "next/link";
 import { ModeToggle } from "./theme-button";
-import { SendMailDialog } from "./send-mail-dialog";
 import { useEffect } from "react";
 import ContactDialog from "./contact-dialog";
-import { Button } from "@nextui-org/button";
 
 const Navbar = () => {
   useEffect(() => {
@@ -24,7 +22,7 @@ const Navbar = () => {
   return (
     <header
       id="navbar"
-      className="py-8 px-4 md:px-16 lg:px-20 xl:px-40 fixed w-screen  transition-all z-50"
+      className="py-8 px-4 md:px-16 lg:px-20 xl:px-40 fixed w-screen  transition-all z-40"
     >
       <nav className="w-full flex">
         <Link href={"/"} className="text-2xl xl:text-3xl font-bold mr-auto">

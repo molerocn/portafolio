@@ -1,15 +1,9 @@
 "use client";
 
 import { ChangeEvent, FormEvent, useEffect, useRef, useState } from "react";
-import { Ubuntu_Mono } from "next/font/google";
-import { HoverCardContent, HoverCard, HoverCardTrigger } from "./ui/hover-card";
 import { ABOUT_ME, GITHUB_URL, LANGUAGES, LINKEDIN_URL } from "@/lib/constants";
-import Typed from "typed.js";
 import Link from "next/link";
-import { SendMailDialog } from "./send-mail-dialog";
-import { Mail, MoveDown } from "lucide-react";
 import { ModeToggle } from "./theme-button";
-import ContactDialog from "./contact-dialog";
 import { Popover, PopoverContent, PopoverTrigger } from "@nextui-org/react";
 
 interface Command {
@@ -17,7 +11,6 @@ interface Command {
   text: string;
 }
 
-const ubuntu = Ubuntu_Mono({ subsets: ["latin"], weight: "400" });
 
 const TerminalSimulator = ({
   isTerminalMaximized,
@@ -30,7 +23,6 @@ const TerminalSimulator = ({
   const [comandos, setComandos] = useState<Command[]>([]);
   const [command, setCommand] = useState("");
   const terminalRef = useRef<HTMLDivElement>(null);
-  const typedCommand = useRef<HTMLInputElement>(null);
 
   let lenguagesResponse = "Estos son los lenguajes que domino:";
   LANGUAGES.forEach((lenguage) => {
@@ -161,9 +153,7 @@ const TerminalSimulator = ({
   }, []);
 
   return (
-    <section
-      className={`${ubuntu.className} fixed top-0 right-0 h-screen flex items-center z-40`}
-    >
+    <section className="fixed top-0 right-0 h-screen flex items-center z-50">
       <div>
         {/* <p className="text-gray-400">
           Intenta escribiendo <span ref={typedCommand}></span>
@@ -203,7 +193,7 @@ const TerminalSimulator = ({
                 </PopoverTrigger>
                 <PopoverContent>
                   <div
-                    className={`${ubuntu.className} p-4 rounded-lg border border-gray-200 shadow-lg bg-white dark:bg-gray-700 dark:border-gray-700`}
+                    className={`p-4 rounded-lg border border-gray-200 shadow-lg bg-white dark:bg-gray-700 dark:border-gray-700`}
                   >
                     Ctrl + L - Ctrl + U
                     <ul className="mt-2">
@@ -234,7 +224,7 @@ const TerminalSimulator = ({
                   id="command-input"
                   type="text"
                   autoComplete="off"
-                  className="bg-transparent dark:text-white border-transparent focus:border-transparent focus:ring-transparent w-full outline-none"
+                  className="bg-transparent dark:text-white border-transparent focus:border-transparent focus:ring-transparent w-full outline-none firacode-font"
                 />
               </form>
             </div>
@@ -298,12 +288,13 @@ function CommandLine({
   type: "command" | "response";
 }) {
   return (
-    <div className="flex items-center">
+    <div className="flex items-center terminal-section">
       {type === "command" && (
         <i className="fa-solid fa-chevron-right mr-2 text-[0.7rem] text-green-500"></i>
       )}
       <pre
-        style={{ fontFamily: "__Ubuntu_Mono_328342", whiteSpace: "pre-wrap" }}
+        style={{ whiteSpace: "pre-wrap" }}
+                className="firacode-font"
       >
         {command}
       </pre>
