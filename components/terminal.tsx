@@ -260,10 +260,9 @@ const TerminalSimulator = ({
               <div className="space-y-4">
                 <div className="text-center">
                   <Link
-                    style={{ fontFamily: "__Montserrat_cabfd8" }}
                     href={LINKEDIN_URL}
                     target="_blank"
-                    className="font-bold text-3xl  text-center"
+                    className="font-bold text-3xl  text-center montserrat-font"
                   >
                     in
                   </Link>

@@ -9,7 +9,7 @@ interface Props {
 const NameAnimation = ({ activeColors }: Props) => {
   const { first_color, second_color, third_color } = activeColors;
   return (
-    <div className="text-7xl font-bold flex flex-wrap">
+    <div className="text-7xl font-bold flex flex-wrap name-animation">
       <div className="relative mr-4">
         <span
           className={` 
@@ -27,9 +27,9 @@ const NameAnimation = ({ activeColors }: Props) => {
           Juan{" "}
         </span>
         <span
-          className={` text-black dark:text-white transition-opacity
+          className="text-black dark:text-white transition-opacity
           absolute left-0 -z-10
-        `}
+        "
         >
           Juan{" "}
         </span>
