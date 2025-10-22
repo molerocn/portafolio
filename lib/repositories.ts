@@ -6,7 +6,7 @@ interface Repository {
   repository: string;
 }
 
-const GITHUB = "https://github.com/juancamr";
+const GITHUB = "https://github.com/molerocn";
 
 export const repositories: Repository[] = [
   {

@@ -91,7 +91,7 @@ const TopContainer = ({
             <SocialLink
               photo={"/assets/images/foto_linkedin.jfif"}
               link={LINKEDIN_URL}
-              label="linkedin/@juancamr"
+              label="linkedin/@molerocn"
               description={
                 "Apasionado por la tecnología y la innovación, comprometido con el crecimiento profesional."
               }
@@ -100,7 +100,7 @@ const TopContainer = ({
             <SocialLink
               photo={"/assets/images/foto_linkedin.jfif"}
               link={GITHUB_URL}
-              label={"github/@juancamr"}
+              label={"github/@molerocn"}
               description={
                 "Bienvenido a mi rincón digital: mi colección de proyectos."
               }

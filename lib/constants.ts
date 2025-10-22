@@ -60,11 +60,11 @@ export const BASES_DE_DATOS = [
 ];
 
 export const LINKEDIN_URL =
-  "https://www.linkedin.com/in/juancamr/";
+  "https://www.linkedin.com/in/molerocn/";
 export const LINKEDIN_PROFILE =
-  "https://media.licdn.com/dms/image/D4E03AQEJDWY4QYYN2A/profile-displayphoto-shrink_800_800/0/1679555424374?e=1698883200&v=beta&t=3fIOmXqhOJTJW3lEH8iGY_HqQIeor2LU7OO-g5q-8r0";
+  "https://avatars.githubusercontent.com/u/93959039?v=4";
 
-export const GITHUB_URL = "https://github.com/juancamr";
+export const GITHUB_URL = "https://github.com/molerocn";
 
 export const ABOUT_ME =
   "Estudiante de Ingeniería de Software con seis meses de experiencia como desarrollador full stack. Apasionado por el aprendizaje autodidacta. Me considero una persona disciplinada y curiosa, lo que me lleva a estar en constante aprendizaje e investigación sobre las últimas tecnologías en el desarrollo de software y estoy comprometido a contribuir con mis conocimientos en proyectos relevantes.";

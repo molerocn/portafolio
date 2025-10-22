@@ -50,7 +50,7 @@ const SocialLink = (props: Props) => {
           </div>
           <div className="flex space-x-4 p-4 pt-8">
             <div>
-              <p className="font-bold mb-1">@juancamr</p>
+              <p className="font-bold mb-1">@molerocn</p>
               <p className="text-sm text-gray-600 dark:text-gray-400">
                 {description}
               </p>

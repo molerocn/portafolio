@@ -11,7 +11,7 @@ const footerContent: { title: string; links?: any[]; content?: any[] }[] = [
     content: [
       {
         icon: "far fa-envelope",
-        content: "jcmrojas29@gmail.com",
+        content: "carlos.molero.n@gmail.com",
       },
       {
         icon: "fas fa-phone-alt",

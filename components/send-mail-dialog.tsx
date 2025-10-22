@@ -18,7 +18,7 @@ export function SendMailDialog({ children }: { children: React.ReactNode }) {
               className="h-48 w-full lg:h-full object-cover rounded-l"
             />
             <p className="absolute bottom-0 right-0 mb-4 mr-4 text-white font-bold">
-              @juancamr
+              @molerocn
             </p>
           </div>
           <div className="p-4 lg:p-10">
